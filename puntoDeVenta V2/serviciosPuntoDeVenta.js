@@ -37,17 +37,14 @@ calcularTotal = function (valorSubtotal, valorDescuento, valorIVA,) {
     let nombreProducto;
     let cantidad;
     let precioProducto;
-    let resultado;
-    let resultadoFormato;
+   
     
     nombreProducto = recuperarTexto("txtProducto");
     cantidad = recuperarInt("txtCantidad");
     precioProducto = recuperarFloat("txtPrecio");
 
     if (esProductoValido(nombreProducto, "lblErrorProducto") & esCantidadValido(cantidad, "lblErrorCantidad") & esPrecioValido(precioProducto, "lblErrorPrecio")) {
-        resultado = calcularTotal(valorSubtotal, valorDescuento, valorIVA);
-        resultadoFormato = resultado.toFixed(2);
-        mostrarTexto("lblTotal", resultadoFormato);
+        
         totalPagar = (valorSubtotal - valorDescuento) + valorIVA;
         return totalPagar;
 
