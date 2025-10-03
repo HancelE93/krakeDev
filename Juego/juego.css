@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+.contenedor-principal {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    color: #333;
+}
+
+.opciones-jugador img {
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.opciones-jugador img:hover {
+    transform: scale(1.1);
+}
+
+.eleccion-computador,
+.resultado,
+.puntajes,
+.boton-reiniciar {
+    margin-top: 20px;
+}
+
+#txtResultado {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.boton-reiniciar input {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton-reiniciar input:hover {
+    background-color: #0056b3;
+}

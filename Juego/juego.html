@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    
+    <title>Piedra, Papel o Tijera</title>
+    <script src="juego.js"></script>
+    <script src="serviciosJuego.js"></script>
+    <script src="utilitarios.js"></script>
+    <link rel="stylesheet" href="juego.css">
+</head>
+
+<body>
+    <div class="contenedor-principal">
+
+        <h2 class="titulo">JUEGA PIEDRA PAPEL O TIJERA</h2>
+
+        <!-- Opciones del jugador -->
+        <div class="opciones-jugador">
+            <img src="./imagenes/piedra.png" onclick="jugar('piedra')" width="100" alt="Piedra">
+            <img src="./imagenes/papel.png" onclick="jugar('papel')" width="100" alt="Papel">
+            <img src="./imagenes/tijera.png" onclick="jugar('tijera')" width="100" alt="Tijera">
+        </div>
+
+        <!-- Elección del computador -->
+        <div class="eleccion-computador">
+            <h3>Elección del Computador:</h3>
+            <img id="imgComputador" src="" width="100" alt="Opción del computador">
+        </div>
+
+        <!-- Resultado del juego -->
+        <div class="resultado">
+            <h3 id="txtResultado">Resultado:</h3>
+        </div>
+
+        <!-- Puntajes -->
+        <div class="puntajes">
+            <p>Usuario: <span id="puntosUsuario">0</span></p>
+            <p>Computador: <span id="puntosComputador">0</span></p>
+        </div>
+
+        <!-- Botón de nueva partida -->
+        <div class="boton-reiniciar">
+            <input type="button" value="NUEVA PARTIDA" onclick="nuevaPartida();" />
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
