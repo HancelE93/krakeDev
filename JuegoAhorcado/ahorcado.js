@@ -30,8 +30,8 @@ guardarPalabra = function () {
 }
 
 //Paso 2
-mostraLetra = function (letra, posicion) {
-    let idDiv = div + posicion;
+mostrarLetra = function (letra, posicion) {
+    let idDiv = "div" + posicion;
     let div = document.getElementById(idDiv);
     if (div) {
         div.textContent = letra;
@@ -51,8 +51,8 @@ validar = function (letra) {
     }
 
     if (!letraEncontrada) {
-        alert("LA LETRA NO ES PARTE DE LA PALABRA");
         errores++;
+        mostrarAhorcado();
     }
 }
 //Paso 4
@@ -66,18 +66,18 @@ ingresarLetra=function(){
         return;
     }
 
-    if (esMayuscula(letra)) {
+    if (esMayuscula(letra)){
         intentos++;
         validar(letra);
 
         
         if (coincidencias == 5) {
-            alert("!!HA GANADO!!");
+           document.getElementById("ahorcadoImagen").src = "ganador.gif";
         }
 
     
         if (intentos == 10) {
-            alert("!!HA PERDIDO!!");
+            document.getElementById("ahorcadoImagen").src = "gameOver.gif";
         }
 
     } else {
@@ -85,4 +85,11 @@ ingresarLetra=function(){
     }
 
     document.getElementById("txtLetra").value ="";
+}
+//Paso 6
+mostrarAhorcado=function(){
+   if (errores >= 1 && errores <= 9) {
+        let img = document.getElementById("ahorcadoImagen");
+        img.src = "Ahorcado_0" + errores + ".png";
+    }
 }
