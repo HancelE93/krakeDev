@@ -28,3 +28,13 @@ guardarPalabra=function(){
     alert("VALIDACION COMPLETA")
     return true;
 }
+
+//Paso 2
+mostraLetra=function(letra,posicion){
+let idDiv = div + posicion;
+let div = document.getElementById(idDiv);
+if (div) {
+        div.textContent = letra;
+    }
+
+}
