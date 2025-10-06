@@ -48,3 +48,17 @@ validar = function (letra) {
         }
     }
 }
+
+//Paso 4
+ingresarLetra=function(){
+
+    let letra = document.getElementById("txtLetra").value;
+
+    if (esMayuscula(letra)) {
+        validar(letra);
+    } else {
+        alert("SOLO INGRESAR MAYÚSCULAS");
+    }
+
+    document.getElementById("txtLetra").value ="";
+}
