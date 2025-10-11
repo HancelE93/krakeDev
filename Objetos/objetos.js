@@ -37,3 +37,55 @@ crearProducto=function(){
         console.log("Ambos prodcutos tienen el mismo stock")
     }
 }
+
+modificarAtributos=function(){
+    let cuenta={
+        numero:"2212590403",
+        saldo: 0.0
+    }
+    cuenta.saldo=100;
+    cuenta.saldo+=10;
+    console.log(cuenta.saldo)
+}
+
+crearCliente=function(){
+    let cliente={
+        cedula:"1723439319",
+        nombre: "Rosttony"
+    }
+   let cliente1={};
+   cliente1.nombre="Hancel";
+   cliente1.apellido="Espin";
+   cliente.cedula="17"
+}
+
+incrementarSAldo=function(cuenta,monto){
+    cuenta.saldo+=monto;
+}
+
+determinarMayor=function(persona1,persona2){
+    if(persona1.edad>persona2.edad){
+        return persona1;
+    }else if(persona2.edad>persona1.edad){
+        return persona2;
+    }else{
+        return null;
+    }
+}
+
+probarIncrementoSaldo=function(){
+    let cta={numero:"123456",saldo:34.0}
+    incrementarSAldo(cta,100);
+    console.log(cta.saldo);
+}
+
+probarDeterminarMayor=function(){
+    let per1={nombre:"Daniel",edad:55};
+    let per2={nombre:"Aruba",edad:28};
+    let mayor;
+    mayor=determinarMayor(per1,per2);
+    if(mayor != null){
+        console.log("EL mayor es: "+mayor.nombre);
+    }
+
+}
