@@ -174,3 +174,11 @@ esSoloMayusculas = function (texto) {
     return true;
 }
 
+guardarDeshabilitar=function(){
+    guardar();
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+}
