@@ -4,7 +4,7 @@ let empleados = [
     { cedula: "1723439319", nombre: "Hancel", apellido: "Espin", sueldo: 800 }
 ]
 
-let esNuevo=false;
+let esNuevo = false;
 
 mostrarEmpleados = function () {
     let cmpTabla = document.getElementById("tablaEmpleados");
@@ -31,11 +31,11 @@ mostrarEmpleados = function () {
 
 
 mostrarOpcionEmpleado = function () {
-    let esNuevo=true;
+    esNuevo = true;
     mostrarComponente("divEmpleado");
     ocultarComponente("divRol");
     ocultarComponente("divResumen");
-    mostrarEmpleados()
+    mostrarEmpleados();
     deshabilitarComponente("txtCedula");
     deshabilitarComponente("txtNombre");
     deshabilitarComponente("txtApellido");
@@ -65,3 +65,112 @@ ejecutarNuevo = function () {
     habilitarComponente("txtSueldo");
     habilitarComponente("btnGuardar");
 }
+
+buscarEmpleado = function (cedula) {
+    let elementoCedula;
+    for (let i = 0; i < empleados.length; i++) {
+        elementoCedula = empleados[i];
+        if (elementoCedula.cedula == cedula) {
+            return elementoCedula;
+        }
+    }
+    return null;
+}
+
+agregarEmpleado = function (empleado) {
+    let resultado = buscarEmpleado(empleado.cedula);
+    if (resultado == null) {
+        empleados.push(empleado);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+guardar = function () {
+    let valorCedula = recuperarTexto("txtCedula");
+    let valorNombre = recuperarTexto("txtNombre");
+    let valorApellido = recuperarTexto("txtApellido");
+    let valorSueldo = recuperarFloat("txtSueldo");
+
+    document.getElementById("lblErrorCedula").textContent = "";
+    document.getElementById("lblErrorNombre").textContent = "";
+    document.getElementById("lblErrorApellido").textContent = "";
+    document.getElementById("lblErrorSueldo").textContent = "";
+
+    // Validaciones
+    let esValido = true;
+
+    // 
+    if (valorCedula.length !== 10 || isNaN(Number(valorCedula))) {
+        document.getElementById("lblErrorCedula").textContent = "La cédula debe tener exactamente 10 dígitos numéricos.";
+        esValido = false;
+    }
+
+
+    if (valorNombre.length < 3 || !esSoloMayusculas(valorNombre)) {
+        document.getElementById("lblErrorNombre").textContent = "El nombre debe tener al menos 3 caracteres y estar en mayúsculas.";
+        esValido = false;
+    }
+
+    if (valorApellido.length < 3 || !esSoloMayusculas(valorApellido)) {
+        document.getElementById("lblErrorApellido").textContent = "El Apellido debe tener al menos 3 caracteres y estar en mayúsculas.";
+        esValido = false;
+    }
+
+    if (valorSueldo < 400 || valorSueldo > 5000) {
+        document.getElementById("lblErrorSueldo").textContent = "El sueldo debe ser un número entre 400 y 5000.";
+        esValido = false;
+    }
+
+    if (!esValido) {
+        return;
+    }
+
+    let nuevoEmpleado = {
+        cedula: valorCedula,
+        nombre: valorNombre,
+        apellido: valorApellido,
+        sueldo: valorSueldo
+    }
+
+    if (esNuevo) {
+        let resultado = agregarEmpleado(nuevoEmpleado);
+        if (resultado) {
+            alert("EMPLEADO GUARDADO CORRECTAMENTE");
+            mostrarEmpleados();
+
+        } else {
+            alert("YA EXISTE UN EMPLEADO CON LA CEDULA");
+        }
+    } else {
+        let modificado = modificarEmpleado(nuevoEmpleado);
+        if (modificado) {
+            alert("EMPLEADO MODIFICADO CORRECTAMENTE");
+            mostrarEmpleados();
+            esNuevo = true;
+
+        }
+    }
+}
+modificarEmpleado = function (empleado) {
+    let empleadoEncontrado = buscarEmpleado(empleado.cedula);
+    if (empleadoEncontrado != null) {
+        empleadoEncontrado.nombre = empleado.nombre;
+        empleadoEncontrado.apellido = empleado.apellido;
+        empleadoEncontrado.sueldo = empleado.sueldo;
+        return true;
+    }
+    return false;
+}
+
+esSoloMayusculas = function (texto) {
+    for (let i = 0; i < texto.length; i++) {
+        let c = texto.charAt(i);
+        if (c < 'A' || c > 'Z') {
+            return false;
+        }
+    }
+    return true;
+}
+
