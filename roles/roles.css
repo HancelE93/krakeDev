@@ -185,4 +185,35 @@ tbody tr:nth-child(odd) {
     color:red;
     font-style: italic;
     font-size: 14px;
+
 }
+
+.miTabla {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.miTabla th {
+    background-color: #217023;
+    color: white;
+    padding: 8px;
+}
+
+.miTabla td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.miTabla tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.miTabla tr:nth-child(odd) {
+    background-color: #e6e6e6;
+}
+
+.miTabla tr:hover {
+    background-color: #c2f0c2;
+}
+

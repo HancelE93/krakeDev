@@ -6,11 +6,11 @@ let empleados = [
 
 mostrarEmpleados=function(){
     let cmpTabla=document.getElementById("tablaEmpleados");
-    let contenidoTabla="<table><tr>"+
+    let contenidoTabla="<table class=\"miTabla\"><tr>" +
     "<th>CEDULA</th>"+
     "<th>NOMBRE</th>"+
-    "<th>APELLIDO"+
-    "<th>SULEDO"
+    "<th>APELLIDO</th>"+
+    "<th>SULEDO</th>"+
     "</tr>";
     let elementoEmpleados;
     for(let i=0;i<empleados.length;i++){
@@ -22,7 +22,7 @@ mostrarEmpleados=function(){
         +"<td>"+elementoEmpleados.sueldo+ "</td>"
         +"</tr>"
     }
-     contenidoTabla+="</table>"
+    contenidoTabla+="</table>"
     cmpTabla.innerHTML=contenidoTabla;
 }
 
