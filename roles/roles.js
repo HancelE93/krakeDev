@@ -4,6 +4,8 @@ let empleados = [
     { cedula: "1723439319", nombre: "Hancel", apellido: "Espin", sueldo: 800 }
 ]
 
+let roles = []
+
 let esNuevo = false;
 
 mostrarEmpleados = function () {
@@ -48,6 +50,9 @@ mostrarOpcionRol = function () {
     mostrarComponente("divRol");
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
+    deshabilitarComponente("lblguardar")
+    mostrarRoles();
+    
 }
 
 mostrarOpcionResumen = function () {
@@ -240,7 +245,7 @@ limpiar = function () {
     esNuevo = false
 }
 
-buscarRol = function () {
+buscarPorRol = function () {
     let valorCedula = recuperarTexto("txtBusquedaCedulaRol");
     let empleado = buscarEmpleado(valorCedula);
 
@@ -294,6 +299,147 @@ calcularRol = function () {
     // .textContent: pone texto dentro de un div (no editable por el usuario)
     // toFixed(2): asegura que se muestre con 2 decimales
     document.getElementById("infoPago").textContent = valorAPagar.toFixed(2);
+
+    habilitarComponente("lblguardar");
 }
 
+buscarRol = function (cedula) {
+    // Recorremos el arreglo roles
+    for (let i = 0; i < roles.length; i++) {
+        let rol = roles[i];
+        // Si encontramos la cédula correspondiente, retornamos el objeto rol
+        if (rol.cedula === cedula) {
+            return rol;
+        }
+    }
+    // Si no encontramos nada, retornamos null
+    return null;
+}
 
+agregarRol = function (rol) {
+    // Verificamos si ya existe un rol con la misma cédula
+    let existeRol = buscarRol(rol.cedula);
+
+    if (existeRol == null) {
+        // No existe, lo agregamos al arreglo roles
+        roles.push(rol);
+        alert("ROL AGREGADO CORRECTAMENTE");
+    } else {
+        // Ya existe un rol con esa cédula
+        alert("YA EXISTE UN ROL CON ESTA CÉDULA");
+    }
+}
+calcularAporteIESS = function(sueldo) {
+    let aporte = sueldo * 0.1115;
+    return aporte; // Retorna el valor que debe pagar al IESS
+}
+
+guardarRol = function() {
+    //  Recuperar los valores de la pantalla
+    let cedula = recuperarTextoDiv("infoCedula");
+    let nombre = recuperarTextoDiv("infoNombre");
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuento = recuperarFloat("txtDescuentos");
+
+    //  Calcular los valores necesarios
+    let aporteEmpleado = calcularAporteEmpleado(sueldo); // descuento del empleado
+    let aporteEmpleador = calcularAporteIESS(sueldo);    // aporte del empleador
+    let valorAPagar = calcularValorAPagar(sueldo, descuento, aporteEmpleado);
+
+    //  Crear el objeto rol
+    let rol = {
+        cedula: cedula,
+        nombre: nombre,
+        sueldo: sueldo,
+        valorAPagar: valorAPagar,
+        aporteEmpleado: aporteEmpleado,
+        aporteEmpleador: aporteEmpleador
+    };
+
+    //  Agregar al arreglo global
+    agregarRol(rol); // muestra alerta de éxito o error dentro de esa función
+
+    // 5️ Mostrar los roles actualizados
+    mostrarRoles();
+
+   
+    deshabilitarComponente("lblguardar")
+
+}
+
+mostrarRoles = function() {
+    // 1️⃣ Buscar el elemento HTML donde se mostrará la tabla
+    // En este caso, el contenedor con id="tablaResumen"
+    let cmpTabla = document.getElementById("tablaResumen");
+
+    // 2️⃣ Crear el encabezado de la tabla con los títulos de las columnas
+    // Se arma como un texto HTML (string)
+    let contenidoTabla = "<table class=\"miTabla\"><tr>" +
+        "<th>CEDULA</th>" +
+        "<th>NOMBRE</th>" +
+        "<th>VALOR A PAGAR</th>" +
+        "<th>APORTE EMPLEADO</th>" +
+        "<th>APORTE EMPLEADOR</th>" +
+        "</tr>";
+
+    // 3️⃣ Declarar una variable para recorrer el arreglo 'roles'
+    let elementoRol;
+
+    // 4️⃣ Recorrer el arreglo global 'roles'
+    // Cada elemento del arreglo es un objeto 'rol' con datos del empleado
+    for (let i = 0; i < roles.length; i++) {
+        elementoRol = roles[i]; // tomar el rol actual
+
+        // 5️⃣ Agregar una nueva fila (<tr>) con las celdas (<td>) de los datos
+        // Usamos 'toFixed(2)' para mostrar los números con 2 decimales
+        contenidoTabla +=
+            "<tr><td>" + elementoRol.cedula + "</td>" + // Cedula del empleado
+            "<td>" + elementoRol.nombre + "</td>" +      // Nombre del empleado
+            "<td>" + elementoRol.valorAPagar.toFixed(2) + "</td>" + // Valor total a pagar
+            "<td>" + elementoRol.aporteEmpleado.toFixed(2) + "</td>" + // Aporte del empleado
+            "<td>" + elementoRol.aporteEmpleador.toFixed(2) + "</td>" + // Aporte del empleador
+            "</tr>";
+    }
+
+    // 6️⃣ Cerrar la tabla agregando la etiqueta </table>
+    contenidoTabla += "</table>";
+
+    // 7️⃣ Insertar todo el contenido HTML dentro del elemento del documento
+    // Esto actualiza la tabla visible en pantalla
+    cmpTabla.innerHTML = contenidoTabla;
+
+    mostrarTotales();
+}
+
+mostrarTotales = function() {
+
+    // 1️⃣ Declaramos las variables acumuladoras en 0
+    // Estas servirán para ir sumando los valores de todos los roles
+    let totalEmpleado = 0;
+    let totalEmpleador = 0;
+    let totalAPagar = 0;
+
+    // 2️⃣ Recorremos todo el arreglo global "roles"
+    for (let i = 0; i < roles.length; i++) {
+        // Tomamos el rol actual
+        let rol = roles[i];
+
+        // 3️⃣ Acumulamos los valores
+        totalEmpleado += rol.aporteEmpleado;  // sumamos lo que paga el empleado
+        totalEmpleador += rol.aporteEmpleador; // sumamos lo que paga el empleador
+        totalAPagar += rol.valorAPagar;       // sumamos el total a pagar del empleado
+    }
+
+    // 4️⃣ Mostramos los totales en pantalla (en los campos respectivos)
+    // Supongamos que los campos tienen estos IDs en tu HTML:
+    // infoTotalEmpleado, infoTotalEmpleador, infoTotalAPagar
+
+    document.getElementById("infoAporteEmpleado").textContent = totalEmpleado.toFixed(2);
+    document.getElementById("infoAporteEmpresa").textContent = totalEmpleador.toFixed(2);
+    document.getElementById("infoTotalPago").textContent = totalAPagar.toFixed(2);
+
+    
+   // 4️⃣ (Opcional) Total general de nómina
+    let totalNomina = totalEmpleado + totalEmpleador + totalAPagar;
+    console.log("Total general de nómina:", totalNomina);
+}
