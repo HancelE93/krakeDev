@@ -239,3 +239,61 @@ limpiar = function () {
     deshabilitarComponente("btnGuardar");
     esNuevo = false
 }
+
+buscarRol = function () {
+    let valorCedula = recuperarTexto("txtBusquedaCedulaRol");
+    let empleado = buscarEmpleado(valorCedula);
+
+    if (empleado == null) {
+        alert("EMPLEADO NO EXISTE");
+    } else {
+        document.getElementById("infoCedula").textContent = empleado.cedula;
+        document.getElementById("infoNombre").textContent = empleado.nombre + " " + empleado.apellido;
+        document.getElementById("infoSueldo").textContent = empleado.sueldo;
+    }
+
+}
+
+calcularAporteEmpleado = function (sueldo) {
+    let aporte = sueldo * 0.095;
+    return aporte;
+}
+
+calcularValorAPagar = function (sueldo, aporte, descuento) {
+    let valorPagar = sueldo - aporte - descuento
+    return valorPagar;
+}
+
+calcularRol = function () {
+    // Recupera el valor del descuento ingresado en el input "txtDescuentos"
+    // 'recuperarFloat' devuelve un número flotante (tipo Number) desde un input
+    let descuento = recuperarFloat("txtDescuentos");
+
+    // Recupera el valor del sueldo ingresado en el div "infoSueldo"
+    // 'recuperarFloatDiv' convierte el texto dentro del div a número flotante
+    let sueldo = recuperarFloatDiv("infoSueldo");
+
+    // Validación: si el descuento no es un número, es negativo o mayor que el sueldo
+    if (isNaN(descuento) || descuento < 0 || descuento > sueldo) {
+        alert("El descuento debe ser un número válido entre 0 y el sueldo del empleado.");
+        return; // Termina la función aquí, no se ejecuta nada más
+    }
+
+    // Calcula el aporte del empleado usando otra función que recibe el sueldo
+    let aporte = calcularAporteEmpleado(sueldo);
+
+    // Muestra el aporte en el div "infoIESS"
+    // .textContent: pone texto dentro de un div (el usuario no lo puede editar)
+    // toFixed(2): formatea el número con 2 decimales para mostrarlo bonito
+    document.getElementById("infoIESS").textContent = aporte.toFixed(2);
+
+    // Calcula el valor total a pagar usando sueldo, descuento y aporte
+    let valorAPagar = calcularValorAPagar(sueldo, descuento, aporte);
+
+    // Muestra el valor total a pagar en el div "infoPago"
+    // .textContent: pone texto dentro de un div (no editable por el usuario)
+    // toFixed(2): asegura que se muestre con 2 decimales
+    document.getElementById("infoPago").textContent = valorAPagar.toFixed(2);
+}
+
+
