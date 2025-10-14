@@ -59,6 +59,11 @@ mostrarOpcionResumen = function () {
 }
 
 ejecutarNuevo = function () {
+    document.getElementById("txtCedula").value = "";
+    document.getElementById("txtNombre").value = "";
+    document.getElementById("txtApellido").value = "";
+    document.getElementById("txtSueldo").value = "";
+
     habilitarComponente("txtCedula");
     habilitarComponente("txtNombre");
     habilitarComponente("txtApellido");
@@ -139,6 +144,14 @@ guardar = function () {
         if (resultado) {
             alert("EMPLEADO GUARDADO CORRECTAMENTE");
             mostrarEmpleados();
+            esNuevo = false;
+
+            // Deshabilitar campos
+            deshabilitarComponente("txtCedula");
+            deshabilitarComponente("txtNombre");
+            deshabilitarComponente("txtApellido");
+            deshabilitarComponente("txtSueldo");
+            deshabilitarComponente("btnGuardar");
 
         } else {
             alert("YA EXISTE UN EMPLEADO CON LA CEDULA");
@@ -148,21 +161,34 @@ guardar = function () {
         if (modificado) {
             alert("EMPLEADO MODIFICADO CORRECTAMENTE");
             mostrarEmpleados();
-            esNuevo = true;
+            esNuevo = false;
 
         }
     }
 }
 modificarEmpleado = function (empleado) {
-    let empleadoEncontrado = buscarEmpleado(empleado.cedula);
-    if (empleadoEncontrado != null) {
-        empleadoEncontrado.nombre = empleado.nombre;
-        empleadoEncontrado.apellido = empleado.apellido;
-        empleadoEncontrado.sueldo = empleado.sueldo;
-        return true;
+    // Modificación
+    let empleadoExistente = buscarEmpleado(empleado.cedula);
+    if (empleadoExistente != null) {
+        empleadoExistente.nombre = empleado.nombre;
+        empleadoExistente.apellido = empleado.apellido;
+        empleadoExistente.sueldo = empleado.sueldo;
+
+        // Deshabilitar campos
+        deshabilitarComponente("txtCedula");
+        deshabilitarComponente("txtNombre");
+        deshabilitarComponente("txtApellido");
+        deshabilitarComponente("txtSueldo");
+        deshabilitarComponente("btnGuardar");
+
+        return true;  // Indica que se modificó
     }
     return false;
+
+
+
 }
+
 
 esSoloMayusculas = function (texto) {
     for (let i = 0; i < texto.length; i++) {
@@ -174,11 +200,42 @@ esSoloMayusculas = function (texto) {
     return true;
 }
 
-guardarDeshabilitar=function(){
+guardarDeshabilitar = function () {
     guardar();
     deshabilitarComponente("txtCedula");
     deshabilitarComponente("txtNombre");
     deshabilitarComponente("txtApellido");
     deshabilitarComponente("txtSueldo");
     deshabilitarComponente("btnGuardar");
+}
+
+ejecutarBusqueda = function () {
+    let valorCedula = recuperarTexto("txtCedula");
+    let empleado = buscarEmpleado(valorCedula);
+    if (empleado == null) {
+        alert("EMPLEADON, NO EXISTE");
+    } else {
+        document.getElementById("txtNombre").value = empleado.nombre;
+        document.getElementById("txtApellido").value = empleado.apellido;
+        document.getElementById("txtSueldo").value = empleado.sueldo;
+        deshabilitarComponente("txtCedula");
+        habilitarComponente("txtNombre");
+        habilitarComponente("txtApellido");
+        habilitarComponente("txtSueldo");
+        habilitarComponente("btnGuardar");
+        esNuevo = false
+    }
+}
+
+limpiar = function () {
+    document.getElementById("txtCedula").value = "";
+    document.getElementById("txtNombre").value = "";
+    document.getElementById("txtApellido").value = "";
+    document.getElementById("txtSueldo").value = "";
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+    esNuevo = false
 }
