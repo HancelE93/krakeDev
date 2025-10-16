@@ -2,223 +2,272 @@
 <html>
 
 <head>
-    <script src="utilitarios.js" ></script>
-    <script src="roles.js" ></script>
+    <!-- Se incluyen los scripts de JavaScript -->
+    <!-- utilitarios.js contiene funciones generales como validar, limpiar campos, convertir valores, etc. -->
+    <script src="utilitarios.js"></script>
+    <!-- roles.js contiene funciones específicas de la lógica de roles y empleados -->
+    <script src="roles.js"></script>
+    <!-- roles.css contiene los estilos de la página (colores, tamaños, alineaciones, bordes, etc.) -->
     <link rel="stylesheet" href="roles.css">
 </head>
 
-
+<!-- Al cargar la página, se ejecuta mostrarOpcionRol() -->
+<!-- Esto sirve para que la sección ROL sea la visible inicialmente -->
 <body onload="mostrarOpcionRol();">
-    
+
+    <!-- ==================== MENÚ PRINCIPAL ==================== -->
     <div class="menu">
+        <!-- Cada botón del menú cambia la sección visible al hacer clic -->
+        <!-- EMPLEADO: muestra la sección de empleados y oculta ROL y RESUMEN -->
         <div class="contenedorBoton">
-            <input type="button" value="EMPLEADO" class="estiloBoton" onclick="mostrarOpcionEmpleado();"/>
+            <input type="button" value="EMPLEADO" class="estiloBoton" onclick="mostrarOpcionEmpleado();" />
         </div>
+
+        <!-- ROL: muestra la sección de roles y oculta las otras -->
         <div class="contenedorBoton">
-            <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();"/>
+            <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();" />
         </div>
+
+        <!-- RESUMEN: muestra la sección de resumen de pagos -->
         <div class="contenedorBoton">
             <input type="button" value="RESUMEN" class="estiloBoton" onclick="mostrarOpcionResumen();" />
         </div>
-
     </div>
+
+    <!-- ==================== SECCIÓN EMPLEADO ==================== -->
     <div id="divEmpleado">
-        <div class="principal">
+        <div class="principal"> <!-- Contenedor principal de toda la sección EMPLEADO -->
+
+            <!-- ======== ÁREA DE BÚSQUEDA DE EMPLEADO ======== -->
             <div class="area">
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        CEDULA
-                    </div>
+                    <!-- Título del campo -->
+                    <div class="tituloCampo">CEDULA</div>
                     <div>
+                        <!-- Input para ingresar cédula que se quiere buscar -->
                         <input type="text" class="cajaTexto" id="txtBusquedaCedula" />
+                        <!-- Aquí se muestra un mensaje de error si no se encuentra el empleado -->
                         <div class="error" id="lblErrorBusqueda"></div>
                     </div>
                 </div>
+                <!-- Botón de búsqueda (JS podría llenarlo para que haga la búsqueda real) -->
                 <div class="contenedorBoton">
                     <input type="button" value="BUSCAR" class="estiloBoton" />
                 </div>
             </div>
 
+            <!-- ======== ÁREA DE INGRESO / EDICIÓN DE EMPLEADO ======== -->
             <div class="area">
+
+                <!-- Campo CÉDULA -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        CEDULA
-                    </div>
+                    <div class="tituloCampo">CEDULA</div>
                     <div>
                         <input type="text" class="cajaTexto" id="txtCedula" />
+                        <!-- Mensaje de error si la cédula ingresada no es válida -->
                         <div class="error" id="lblErrorCedula"></div>
                     </div>
                 </div>
+
+                <!-- Campo NOMBRE -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        NOMBRE
-                    </div>
+                    <div class="tituloCampo">NOMBRE</div>
                     <div>
                         <input type="text" class="cajaTexto" id="txtNombre" />
+                        <!-- Mensaje de error si el nombre está vacío o no es válido -->
                         <div class="error" id="lblErrorNombre"></div>
                     </div>
                 </div>
+
+                <!-- Campo APELLIDO -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APELLIDO
-                    </div>
+                    <div class="tituloCampo">APELLIDO</div>
                     <div>
                         <input type="text" class="cajaTexto" id="txtApellido" />
+                        <!-- Mensaje de error si el apellido está vacío o no es válido -->
                         <div class="error" id="lblErrorApellido"></div>
                     </div>
                 </div>
+
+                <!-- Campo SUELDO -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        SUELDO
-                    </div>
+                    <div class="tituloCampo">SUELDO</div>
                     <div>
                         <input type="text" class="cajaTexto" id="txtSueldo" />
+                        <!-- Mensaje de error si el sueldo no es numérico o válido -->
                         <div class="error" id="lblErrorSueldo"></div>
                     </div>
                 </div>
+
+                <!-- Botones de acción EMPLEADO -->
                 <div class="botones">
+                    <!-- NUEVO: limpia todos los campos para ingresar un nuevo empleado -->
                     <div class="contenedorBoton">
                         <input type="button" value="NUEVO" class="estiloBoton" onclick="ejecutarNuevo();" />
                     </div>
+
+                    <!-- GUARDAR: valida los datos y guarda el empleado en el arreglo global 'roles' -->
                     <div class="contenedorBoton">
                         <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar" onclick="guardarDeshabilitar();" />
                     </div>
+
+                    <!-- LIMPIAR: limpia los campos sin guardar los datos -->
                     <div class="contenedorBoton">
                         <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar();" />
                     </div>
                 </div>
-                <div id="tablaEmpleados" class="areaTabla">
-              
 
-                </div>
+                <!-- Tabla donde se muestran los empleados guardados dinámicamente por JS -->
+                <div id="tablaEmpleados" class="areaTabla"></div>
             </div>
+
+            <!-- Imagen decorativa de la sección EMPLEADO -->
             <div class="logoEscuela">
                 <img src="./imagenes/empleado.jpg" width="80%" />
             </div>
         </div>
     </div>
+
+    <!-- ==================== SECCIÓN ROL ==================== -->
     <div id="divRol">
         <div class="principal">
+
+            <!-- Área de búsqueda por cédula en ROL -->
             <div class="area">
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        CEDULA
-                    </div>
+                    <div class="tituloCampo">CEDULA</div>
                     <div>
+                        <!-- Input para buscar un empleado por cédula y calcular su rol -->
                         <input type="text" class="cajaTexto" id="txtBusquedaCedulaRol" />
+                        <!-- Muestra error si la cédula no existe -->
                         <div class="error" id="lblErrorBusqueda"></div>
                     </div>
                 </div>
+
+                <!-- Botón BUSCAR en ROL: llama buscarPorRol() para llenar los datos del empleado en ROL -->
                 <div class="contenedorBoton">
-                    <input type="button" value="BUSCAR" class="estiloBoton"  onclick="buscarPorRol();" />
+                    <input type="button" value="BUSCAR" class="estiloBoton" onclick="buscarPorRol();" />
                 </div>
             </div>
 
+            <!-- Área de información y cálculo del rol -->
             <div class="area">
+                <!-- CÉDULA (solo lectura, llenado por JS) -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        CEDULA
-                    </div>
+                    <div class="tituloCampo">CEDULA</div>
                     <div>
                         <div class="info" id="infoCedula"></div>
                     </div>
                 </div>
+
+                <!-- NOMBRE (solo lectura) -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        NOMBRE
-                    </div>
+                    <div class="tituloCampo">NOMBRE</div>
                     <div>
                         <div class="info" id="infoNombre"></div>
                     </div>
                 </div>
+
+                <!-- SUELDO (solo lectura) -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        SUELDO
-                    </div>
+                    <div class="tituloCampo">SUELDO</div>
                     <div>
                         <div class="info" id="infoSueldo"></div>
                     </div>
                 </div>
+
+                <!-- DESCUENTOS -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        DESCUENTOS
-                    </div>
+                    <div class="tituloCampo">DESCUENTOS</div>
                     <div>
+                        <!-- Input donde el usuario ingresa los descuentos aplicables -->
                         <input type="text" class="cajaTexto" id="txtDescuentos" />
+                        <!-- Mensaje de error si el descuento es inválido -->
                         <div class="error" id="lblErrorDescuentos"></div>
                     </div>
                 </div>
+
+                <!-- Botón CALCULAR: llama calcularRol() que hace los cálculos de rol -->
                 <div class="botones">
                     <div class="contenedorBoton">
                         <input type="button" value="CALCULAR" class="estiloBoton" onclick="calcularRol();" />
                     </div>
                 </div>
+
+                <!-- APORTE IESS calculado por JS -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE IESS
-                    </div>
+                    <div class="tituloCampo">APORTE IESS</div>
                     <div>
                         <div class="info" id="infoIESS">0.0</div>
                     </div>
                 </div>
+
+                <!-- TOTAL A PAGAR calculado por JS -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        TOTAL A PAGAR
-                    </div>
+                    <div class="tituloCampo">TOTAL A PAGAR</div>
                     <div>
                         <div class="info" id="infoPago">0.0</div>
                     </div>
                 </div>
+
+                <!-- Botón GUARDAR ROL: guarda los cálculos en el arreglo global -->
                 <div class="botones">
                     <div class="contenedorBoton">
-                        <input type="button" value="GUARDAR" class="estiloBoton" id="lblguardar" onclick="guardarRol();"/>
+                        <input type="button" value="GUARDAR" class="estiloBoton" id="lblguardar" onclick="guardarRol();" />
                     </div>
                 </div>
             </div>
+
+            <!-- Imagen decorativa ROL -->
             <div class="logoEscuela">
-                <img src="./imagenes/rolPagos.jpg"  width="80%" />
+                <img src="./imagenes/rolPagos.jpg" width="80%" />
             </div>
         </div>
     </div>
+
+    <!-- ==================== SECCIÓN RESUMEN ==================== -->
     <div id="divResumen">
         <div class="principal">
-            <div class="area">
-              
-            </div>
-            <div class="area">
-                <div id="tablaResumen" class="areaTabla">
 
-                </div>
+            <!-- Área vacía, podría usarse para filtros o búsquedas futuras -->
+            <div class="area"></div>
+
+            <!-- Área de resumen -->
+            <div class="area">
+                <!-- Tabla de resumen generada por JS -->
+                <div id="tablaResumen" class="areaTabla"></div>
+
+                <!-- Total a pagar acumulado -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        TOTAL A PAGAR
-                    </div>
+                    <div class="tituloCampo">TOTAL A PAGAR</div>
                     <div>
                         <div class="info" id="infoTotalPago">0.0</div>
                     </div>
                 </div>
+
+                <!-- Aporte total de la empresa -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE EMPRESA
-                    </div>
+                    <div class="tituloCampo">APORTE EMPRESA</div>
                     <div>
                         <div class="info" id="infoAporteEmpresa">0.0</div>
                     </div>
                 </div>
+
+                <!-- Aporte total de los empleados -->
                 <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE EMPLEADO
-                    </div>
+                    <div class="tituloCampo">APORTE EMPLEADO</div>
                     <div>
                         <div class="info" id="infoAporteEmpleado">0.0</div>
                     </div>
                 </div>
             </div>
+
+            <!-- Imagen decorativa RESUMEN -->
             <div class="logoEscuela">
                 <img src="./imagenes/resumen.jpg" width="80%" />
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>
