@@ -1,29 +1,24 @@
-// Arreglo inicial de empleados con algunos datos de ejemplo
 let empleados = [
     { cedula: "1714616123", nombre: "John", apellido: "Cena", sueldo: 500.0 },
     { cedula: "0914632123", nombre: "Luisa", apellido: "Gonzalez", sueldo: 900.0 },
     { cedula: "1723439319", nombre: "Hancel", apellido: "Espin", sueldo: 800 }
 ]
 
-// Arreglo vacío donde se almacenarán los roles calculados
 let roles = []
 
-// Variable para saber si estamos creando un nuevo empleado
 let esNuevo = false;
 
-// Función que muestra todos los empleados en la tabla HTML
 mostrarEmpleados = function () {
-    let cmpTabla = document.getElementById("tablaEmpleados"); // Obtiene el div donde se mostrará la tabla
-    let contenidoTabla = "<table class=\"miTabla\"><tr>" +  // Comienza la tabla con los encabezados
+    let cmpTabla = document.getElementById("tablaEmpleados");
+    let contenidoTabla = "<table class=\"miTabla\"><tr>" +
         "<th>CEDULA</th>" +
         "<th>NOMBRE</th>" +
         "<th>APELLIDO</th>" +
         "<th>SULEDO</th>" +
         "</tr>";
     let elementoEmpleados;
-    for (let i = 0; i < empleados.length; i++) { // Recorre cada empleado
+    for (let i = 0; i < empleados.length; i++) {
         elementoEmpleados = empleados[i];
-        // Agrega una fila con los datos del empleado
         contenidoTabla +=
             "<tr><td>" + elementoEmpleados.cedula + "</td>"
             + "<td>" + elementoEmpleados.nombre + "</td>"
@@ -32,17 +27,17 @@ mostrarEmpleados = function () {
             + "</tr>"
     }
     contenidoTabla += "</table>"
-    cmpTabla.innerHTML = contenidoTabla; // Inserta la tabla generada en el HTML
+    cmpTabla.innerHTML = contenidoTabla;
 }
 
-// Función que muestra la sección de Empleado y oculta las otras secciones
+
+
 mostrarOpcionEmpleado = function () {
-    esNuevo = true; // Indicamos que estamos agregando un nuevo empleado
-    mostrarComponente("divEmpleado");  // Muestra el div de Empleado
-    ocultarComponente("divRol");       // Oculta la sección de Rol
-    ocultarComponente("divResumen");   // Oculta la sección de Resumen
-    mostrarEmpleados();                // Llama a la función para mostrar la tabla
-    // Deshabilita los campos para que no se pueda editar hasta que se presione "Nuevo"
+    esNuevo = true;
+    mostrarComponente("divEmpleado");
+    ocultarComponente("divRol");
+    ocultarComponente("divResumen");
+    mostrarEmpleados();
     deshabilitarComponente("txtCedula");
     deshabilitarComponente("txtNombre");
     deshabilitarComponente("txtApellido");
@@ -50,23 +45,24 @@ mostrarOpcionEmpleado = function () {
     deshabilitarComponente("btnGuardar");
 }
 
-// Función que muestra la sección de Rol
 mostrarOpcionRol = function () {
+
     mostrarComponente("divRol");
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
-    deshabilitarComponente("lblguardar") // Deshabilita el botón de guardar rol
-    mostrarRoles(); // Muestra los roles (función que debes tener definida en otro lado)
+    deshabilitarComponente("lblguardar")
+    mostrarRoles();
+    
 }
 
-// Función que muestra la sección de Resumen
 mostrarOpcionResumen = function () {
+
     mostrarComponente("divResumen");
     ocultarComponente("divEmpleado");
     ocultarComponente("divRol");
+
 }
 
-// Función que limpia los campos y habilita para ingresar un nuevo empleado
 ejecutarNuevo = function () {
     document.getElementById("txtCedula").value = "";
     document.getElementById("txtNombre").value = "";
@@ -80,75 +76,67 @@ ejecutarNuevo = function () {
     habilitarComponente("btnGuardar");
 }
 
-// Función que busca un empleado por cédula, devuelve el objeto o null si no existe
 buscarEmpleado = function (cedula) {
     let elementoCedula;
     for (let i = 0; i < empleados.length; i++) {
         elementoCedula = empleados[i];
         if (elementoCedula.cedula == cedula) {
-            return elementoCedula; // Encuentra y devuelve el empleado
+            return elementoCedula;
         }
     }
-    return null; // No encuentra el empleado
+    return null;
 }
 
-// Función que agrega un empleado al arreglo, pero solo si no existe uno con la misma cédula
 agregarEmpleado = function (empleado) {
-    let resultado = buscarEmpleado(empleado.cedula); // Verifica si ya existe
+    let resultado = buscarEmpleado(empleado.cedula);
     if (resultado == null) {
-        empleados.push(empleado); // Agrega al arreglo
+        empleados.push(empleado);
         return true;
     } else {
-        return false; // Ya existe
+        return false;
     }
 }
 
-// Función que guarda o modifica un empleado
 guardar = function () {
-    // Recupera valores de los inputs
     let valorCedula = recuperarTexto("txtCedula");
     let valorNombre = recuperarTexto("txtNombre");
     let valorApellido = recuperarTexto("txtApellido");
     let valorSueldo = recuperarFloat("txtSueldo");
 
-    // Limpia mensajes de error
     document.getElementById("lblErrorCedula").textContent = "";
     document.getElementById("lblErrorNombre").textContent = "";
     document.getElementById("lblErrorApellido").textContent = "";
     document.getElementById("lblErrorSueldo").textContent = "";
 
-    // Validaciones iniciales
+    // Validaciones
     let esValido = true;
 
-    // Valida cédula: 10 dígitos y numérica
+    // 
     if (valorCedula.length !== 10 || isNaN(Number(valorCedula))) {
         document.getElementById("lblErrorCedula").textContent = "La cédula debe tener exactamente 10 dígitos numéricos.";
         esValido = false;
     }
 
-    // Valida nombre: mínimo 3 caracteres y solo mayúsculas
+
     if (valorNombre.length < 3 || !esSoloMayusculas(valorNombre)) {
         document.getElementById("lblErrorNombre").textContent = "El nombre debe tener al menos 3 caracteres y estar en mayúsculas.";
         esValido = false;
     }
 
-    // Valida apellido: mínimo 3 caracteres y solo mayúsculas
     if (valorApellido.length < 3 || !esSoloMayusculas(valorApellido)) {
         document.getElementById("lblErrorApellido").textContent = "El Apellido debe tener al menos 3 caracteres y estar en mayúsculas.";
         esValido = false;
     }
 
-    // Valida sueldo: rango entre 400 y 5000
     if (valorSueldo < 400 || valorSueldo > 5000) {
         document.getElementById("lblErrorSueldo").textContent = "El sueldo debe ser un número entre 400 y 5000.";
         esValido = false;
     }
 
     if (!esValido) {
-        return; // Si hay algún error, se detiene la función
+        return;
     }
 
-    // Construye objeto empleado con los valores
     let nuevoEmpleado = {
         cedula: valorCedula,
         nombre: valorNombre,
@@ -156,14 +144,14 @@ guardar = function () {
         sueldo: valorSueldo
     }
 
-    if (esNuevo) { // Si estamos agregando un empleado
+    if (esNuevo) {
         let resultado = agregarEmpleado(nuevoEmpleado);
         if (resultado) {
             alert("EMPLEADO GUARDADO CORRECTAMENTE");
-            mostrarEmpleados(); // Actualiza la tabla
+            mostrarEmpleados();
             esNuevo = false;
 
-            // Deshabilita campos tras guardar
+            // Deshabilitar campos
             deshabilitarComponente("txtCedula");
             deshabilitarComponente("txtNombre");
             deshabilitarComponente("txtApellido");
@@ -173,49 +161,50 @@ guardar = function () {
         } else {
             alert("YA EXISTE UN EMPLEADO CON LA CEDULA");
         }
-    } else { // Si estamos modificando
+    } else {
         let modificado = modificarEmpleado(nuevoEmpleado);
         if (modificado) {
             alert("EMPLEADO MODIFICADO CORRECTAMENTE");
             mostrarEmpleados();
             esNuevo = false;
+
         }
     }
 }
-
-// Función para modificar los datos de un empleado existente
 modificarEmpleado = function (empleado) {
+    // Modificación
     let empleadoExistente = buscarEmpleado(empleado.cedula);
     if (empleadoExistente != null) {
-        // Actualiza los datos
         empleadoExistente.nombre = empleado.nombre;
         empleadoExistente.apellido = empleado.apellido;
         empleadoExistente.sueldo = empleado.sueldo;
 
-        // Deshabilita campos
+        // Deshabilitar campos
         deshabilitarComponente("txtCedula");
         deshabilitarComponente("txtNombre");
         deshabilitarComponente("txtApellido");
         deshabilitarComponente("txtSueldo");
         deshabilitarComponente("btnGuardar");
 
-        return true; // Indica que se modificó
+        return true;  // Indica que se modificó
     }
-    return false; // No se modificó porque no existe
+    return false;
+
+
+
 }
 
-// Función que verifica si un texto tiene solo mayúsculas
+
 esSoloMayusculas = function (texto) {
     for (let i = 0; i < texto.length; i++) {
         let c = texto.charAt(i);
-        if (c < 'A' || c > 'Z') { // Si encuentra un carácter que no es A-Z
+        if (c < 'A' || c > 'Z') {
             return false;
         }
     }
     return true;
 }
 
-// Función que guarda y luego deshabilita campos automáticamente
 guardarDeshabilitar = function () {
     guardar();
     deshabilitarComponente("txtCedula");
@@ -225,12 +214,11 @@ guardarDeshabilitar = function () {
     deshabilitarComponente("btnGuardar");
 }
 
-// Función que busca un empleado y rellena los campos para modificarlo
 ejecutarBusqueda = function () {
     let valorCedula = recuperarTexto("txtCedula");
     let empleado = buscarEmpleado(valorCedula);
     if (empleado == null) {
-        alert("EMPLEADO NO EXISTE");
+        alert("EMPLEADON, NO EXISTE");
     } else {
         document.getElementById("txtNombre").value = empleado.nombre;
         document.getElementById("txtApellido").value = empleado.apellido;
@@ -244,7 +232,6 @@ ejecutarBusqueda = function () {
     }
 }
 
-// Función que limpia todos los campos y deshabilita entradas
 limpiar = function () {
     document.getElementById("txtCedula").value = "";
     document.getElementById("txtNombre").value = "";
@@ -258,8 +245,29 @@ limpiar = function () {
     esNuevo = false
 }
 
-// Función que busca un empleado por cédula y muestra la información en la sección de Rol
-buscar
+buscarPorRol = function () {
+    let valorCedula = recuperarTexto("txtBusquedaCedulaRol");
+    let empleado = buscarEmpleado(valorCedula);
+
+    if (empleado == null) {
+        alert("EMPLEADO NO EXISTE");
+    } else {
+        document.getElementById("infoCedula").textContent = empleado.cedula;
+        document.getElementById("infoNombre").textContent = empleado.nombre + " " + empleado.apellido;
+        document.getElementById("infoSueldo").textContent = empleado.sueldo;
+    }
+
+}
+
+calcularAporteEmpleado = function (sueldo) {
+    let aporte = sueldo * 0.095;
+    return aporte;
+}
+
+calcularValorAPagar = function (sueldo, aporte, descuento) {
+    let valorPagar = sueldo - aporte - descuento
+    return valorPagar;
+}
 
 calcularRol = function () {
     // Recupera el valor del descuento ingresado en el input "txtDescuentos"
