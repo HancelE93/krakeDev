@@ -1,80 +1,78 @@
-html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  .principal {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-   
-  }
-
-body{
-    background-image: url("fondoDado.jpg");
-    background-size: cover;
-    background-color: aliceblue;
-   
-  
-}
-.imagen{
-    display: flex;
-    flex:5;
- 
-    justify-content: center;
-    align-items: center;
-}
-.botones{
-    display: flex;
-    flex:2;
-
-    justify-content: center;
-    align-items: center;
-}
-.espacio{
-    display: flex;
-    flex:2;
+html, body { 
+    height: 100%; /* Establece que tanto el html como el body ocupen el 100% de la altura de la ventana */
+    margin: 0; /* Elimina el margen predeterminado del navegador para que no haya espacio extra alrededor de la página */
 }
 
-.estiloBoton{
-    background-color: rgb(0, 0, 0); 
-    border: none;
-    color:white;
-    padding: 15px;
-    text-align: center;
-    font-size: 30px;
-    border-radius: 5px;
-    margin: 5px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif
-
+.principal { 
+    display: flex; /* Activa el modelo de diseño flexbox para organizar los elementos hijos de manera flexible */
+    flex-direction: column; /* Los elementos hijos se colocan en columna (uno debajo del otro) */
+    height: 100%; /* El contenedor principal ocupa el 100% de la altura del body */
 }
-.estiloBoton:hover{
-    background-color: rgb(87, 86, 86); 
-    border: none;
-    color:white;
-    padding: 15px;
-    text-align: center;
-    font-size: 30px;
-    border-radius: 5px;
-    margin: 5px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif
 
+body { 
+    background-image: url("fondoDado.jpg"); /* Asigna una imagen de fondo al body */
+    background-size: cover; /* Hace que la imagen de fondo cubra toda la ventana, escalándose proporcionalmente */
+    background-color: aliceblue; /* Color de fondo alternativo en caso de que la imagen no cargue */
 }
-.estiloBoton:active{
-    background-color: rgb(0, 0, 0); 
-    border: none;
-    color:white;
-    padding: 15px;
-    text-align: center;
-    font-size: 30px;
-    border-radius: 5px;
-    margin: 5px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif
 
+.imagen { 
+    display: flex; /* Activa flexbox para alinear su contenido */
+    flex: 5; /* Ocupa 5 partes del espacio disponible dentro del contenedor principal */
+    justify-content: center; /* Centra horizontalmente el contenido dentro de este div */
+    align-items: center; /* Centra verticalmente el contenido dentro de este div */
 }
-h1{
-    font-size: 50px;
+
+.botones { 
+    display: flex; /* Activa flexbox para los botones */
+    flex: 2; /* Ocupa 2 partes del espacio disponible dentro del contenedor principal */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.espacio { 
+    display: flex; /* Activa flexbox, aunque no tiene contenido visible, sirve para separar espacios */
+    flex: 2; /* Ocupa 2 partes del espacio disponible como margen o relleno */
+}
+
+.estiloBoton { 
+    background-color: rgb(0, 0, 0); /* Color de fondo negro */
+    border: none; /* Elimina cualquier borde predeterminado del botón */
+    color: white; /* Color del texto del botón blanco */
+    padding: 15px; /* Espaciado interno dentro del botón de 15px */
+    text-align: center; /* Centra el texto horizontalmente dentro del botón */
+    font-size: 30px; /* Tamaño de fuente de 30px */
+    border-radius: 5px; /* Bordes redondeados con radio de 5px */
+    margin: 5px; /* Margen externo de 5px alrededor del botón */
+    font-weight: bold; /* Fuente en negrita */
+    font-family: Arial, Helvetica, sans-serif; /* Tipografía a usar, priorizando Arial, luego Helvetica y luego sans-serif */
+}
+
+.estiloBoton:hover { 
+    background-color: rgb(87, 86, 86); /* Al pasar el cursor sobre el botón, cambia el color de fondo a gris oscuro */
+    border: none; /* Mantiene sin borde */
+    color: white; /* Texto sigue en blanco */
+    padding: 15px; /* Mantiene el mismo padding */
+    text-align: center; /* Centrado de texto */
+    font-size: 30px; /* Tamaño de fuente igual */
+    border-radius: 5px; /* Bordes redondeados iguales */
+    margin: 5px; /* Margen igual */
+    font-weight: bold; /* Fuente en negrita */
+    font-family: Arial, Helvetica, sans-serif; /* Tipografía igual */
+}
+
+.estiloBoton:active { 
+    background-color: rgb(0, 0, 0); /* Cuando el botón se presiona, vuelve a color negro */
+    border: none; /* Sin borde */
+    color: white; /* Texto en blanco */
+    padding: 15px; /* Padding igual */
+    text-align: center; /* Centrado de texto */
+    font-size: 30px; /* Tamaño de fuente igual */
+    border-radius: 5px; /* Bordes redondeados iguales */
+    margin: 5px; /* Margen igual */
+    font-weight: bold; /* Fuente en negrita */
+    font-family: Arial, Helvetica, sans-serif; /* Tipografía igual */
+}
+
+h1 { 
+    font-size: 50px; /* Tamaño de fuente para los encabezados h1 de 50px */
 }

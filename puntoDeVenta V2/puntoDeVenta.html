@@ -1,88 +1,143 @@
 <!DOCTYPE html>
 <html>
+<!-- Declaración del tipo de documento y apertura del HTML -->
 
 <head>
+    <!-- Sección de encabezado donde se incluyen estilos y scripts -->
+
     <link rel="stylesheet" href="puntoDeVenta.css" />
+    <!-- Enlace al archivo CSS que contiene los estilos del punto de venta -->
+
     <script src="utilitarios.js"></script>
+    <!-- Script con funciones utilitarias que se usarán en este HTML -->
+
     <script src="serviciosPuntoDeVenta.js"></script>
+    <!-- Script con funciones relacionadas a los cálculos del punto de venta -->
+
     <script src="puntoDeVenta.js"></script>
+    <!-- Script principal que controla la interacción de la interfaz de usuario -->
 </head>
 
 <body>
+    <!-- Inicio del cuerpo de la página -->
+
     <div class="principal">
+        <!-- Contenedor principal de toda la aplicación -->
+
         <div class="logoEscuela">
+            <!-- Contenedor del logo o imagen representativa -->
             <img src="./imagenes/punto.jpg" width="80%" />
+            <!-- Imagen del logo, escalada al 80% del contenedor -->
         </div>
 
         <div class="contenido">
+            <!-- Contenedor para la sección de ingreso de datos -->
+
             <div class="titulo">
                 PUNTO DE VENTA
+                <!-- Título principal de la sección -->
             </div>
 
             <div class="ingresoDatos">
+                <!-- Contenedor de un campo de entrada de datos -->
+
                 <div class="tituloCampo">
                     PRODUCTO
+                    <!-- Etiqueta o título del campo -->
                 </div>
+
                 <div>
                     <input type="text" class="cajaTexto" id="txtProducto" />
+                    <!-- Caja de texto donde el usuario ingresa el nombre del producto -->
+
                     <div class="error" id="lblErrorProducto"></div>
+                    <!-- Espacio para mostrar errores de validación relacionados al producto -->
                 </div>
             </div>
 
             <div class="ingresoDatos">
+                <!-- Contenedor de campo de entrada para cantidad -->
+
                 <div class="tituloCampo">
                     CANTIDAD
                 </div>
+
                 <div>
                     <input type="text" class="cajaTexto" id="txtCantidad" />
+                    <!-- Caja de texto para ingresar la cantidad del producto -->
+
                     <div class="error" id="lblErrorCantidad"></div>
+                    <!-- Mensaje de error si la cantidad ingresada es inválida -->
                 </div>
             </div>
 
             <div class="ingresoDatos">
+                <!-- Contenedor de campo de entrada para precio -->
+
                 <div class="tituloCampo">
                     PRECIO
                 </div>
+
                 <div>
                     <input type="text" class="cajaTexto" id="txtPrecio" />
+                    <!-- Caja de texto para ingresar el precio unitario del producto -->
+
                     <div class="error" id="lblErrorPrecio"></div>
+                    <!-- Mensaje de error si el precio ingresado es inválido -->
                 </div>
             </div>
 
             <div class="botones">
+                <!-- Contenedor de botones de acción -->
+
                 <div class="contenedorBoton">
                     <input type="button" value="CALCULAR TOTAL" class="estiloBoton" onclick="calcularValorTotal();" />
+                    <!-- Botón que ejecuta la función para calcular subtotal, descuento, IVA y total -->
                 </div>
+
                 <div class="contenedorBoton">
                     <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar();" />
+                    <!-- Botón que ejecuta la función para limpiar todos los campos de entrada y resultados -->
                 </div>
             </div>
         </div>
 
         <div class="areaResultado">
+            <!-- Contenedor donde se muestran los resultados de los cálculos -->
+
             <div class="resultado">
                 <div>SUBTOTAL:</div>
                 <div id="lblSubtotal">0.0</div>
+                <!-- Muestra el subtotal calculado -->
             </div>
+
             <div class="resultado">
                 <div>DESCUENTO:</div>
                 <div id="lblDescuento">0.0</div>
+                <!-- Muestra el descuento aplicado -->
             </div>
+
             <div class="resultado">
                 <div>IVA 12%:</div>
                 <div id="lblValorIVA">0.0</div>
+                <!-- Muestra el valor del IVA calculado -->
             </div>
+
             <div class="resultado">
                 <div>TOTAL:</div>
                 <div id="lblTotal">0.0</div>
+                <!-- Muestra el total a pagar después del descuento y el IVA -->
             </div>
+
             <div class="resultado">
                 <div>RESUMEN:</div>
                 <div id="lblResumen"></div>
+                <!-- Muestra un resumen del producto, cantidad y precio ingresados -->
             </div>
 
             <div class="imagenResultado">
                 <img src="./imagenes/notas.png" width="50%" />
+                <!-- Imagen decorativa o ilustrativa de la sección de resultados -->
             </div>
         </div>
     </div>

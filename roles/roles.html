@@ -21,16 +21,34 @@
         <!-- EMPLEADO: muestra la sección de empleados y oculta ROL y RESUMEN -->
         <div class="contenedorBoton">
             <input type="button" value="EMPLEADO" class="estiloBoton" onclick="mostrarOpcionEmpleado();" />
+            <!--
+                <input ...>
+                - type="button": elemento de botón simple (no envía formulario).
+                - value="EMPLEADO": texto visible en el botón.
+                - class="estiloBoton": clase CSS para aplicar estilos.
+                - onclick="mostrarOpcionEmpleado();": al hacer clic ejecuta la función JS que muestra la sección EMPLEADO y oculta las otras secciones.
+            -->
         </div>
 
         <!-- ROL: muestra la sección de roles y oculta las otras -->
         <div class="contenedorBoton">
             <input type="button" value="ROL" class="estiloBoton" onclick="mostrarOpcionRol();" />
+            <!--
+                - Este botón activa la vista ROL.
+                - mostrarOpcionRol() está definida en roles.js y se encarga de:
+                  1) Mostrar el div con id="divRol".
+                  2) Ocultar divEmpleado y divResumen.
+                  3) Preparar/limpiar campos relacionados con el cálculo de rol.
+            -->
         </div>
 
         <!-- RESUMEN: muestra la sección de resumen de pagos -->
         <div class="contenedorBoton">
             <input type="button" value="RESUMEN" class="estiloBoton" onclick="mostrarOpcionResumen();" />
+            <!--
+                - Al pulsar este botón se muestra la vista de resumen con la tabla de roles y totales.
+                - mostrarOpcionResumen() oculta las otras secciones y muestra divResumen.
+            -->
         </div>
     </div>
 
@@ -48,11 +66,20 @@
                         <input type="text" class="cajaTexto" id="txtBusquedaCedula" />
                         <!-- Aquí se muestra un mensaje de error si no se encuentra el empleado -->
                         <div class="error" id="lblErrorBusqueda"></div>
+                        <!--
+                            - id="txtBusquedaCedula": se usa para leer la cédula que busca el usuario.
+                            - lblErrorBusqueda: contenedor para mostrar errores relacionados con la búsqueda.
+                            - El manejo (buscar y mostrar mensaje) debe implementarse con JS (ej. una función que llame a buscarEmpleado o similar).
+                        -->
                     </div>
                 </div>
                 <!-- Botón de búsqueda (JS podría llenarlo para que haga la búsqueda real) -->
                 <div class="contenedorBoton">
                     <input type="button" value="BUSCAR" class="estiloBoton" />
+                    <!--
+                        - Aquí falta el atributo onclick: normalmente debería ser onclick="ejecutarBusqueda();" (o la función correspondiente).
+                        - Si no se especifica onclick, el botón no hará nada por sí solo.
+                    -->
                 </div>
             </div>
 
@@ -66,6 +93,10 @@
                         <input type="text" class="cajaTexto" id="txtCedula" />
                         <!-- Mensaje de error si la cédula ingresada no es válida -->
                         <div class="error" id="lblErrorCedula"></div>
+                        <!--
+                            - id="txtCedula": input para crear/editar la cédula del empleado.
+                            - lblErrorCedula: se usa para mostrar mensajes de validación (ej. longitud 10, solo números).
+                        -->
                     </div>
                 </div>
 
@@ -76,6 +107,10 @@
                         <input type="text" class="cajaTexto" id="txtNombre" />
                         <!-- Mensaje de error si el nombre está vacío o no es válido -->
                         <div class="error" id="lblErrorNombre"></div>
+                        <!--
+                            - id="txtNombre": input para el nombre.
+                            - lblErrorNombre: muestra errores (ej. longitud mínima, mayúsculas, caracteres inválidos).
+                        -->
                     </div>
                 </div>
 
@@ -86,6 +121,10 @@
                         <input type="text" class="cajaTexto" id="txtApellido" />
                         <!-- Mensaje de error si el apellido está vacío o no es válido -->
                         <div class="error" id="lblErrorApellido"></div>
+                        <!--
+                            - id="txtApellido": input para el apellido.
+                            - lblErrorApellido: para mostrar errores de validación del apellido.
+                        -->
                     </div>
                 </div>
 
@@ -96,6 +135,10 @@
                         <input type="text" class="cajaTexto" id="txtSueldo" />
                         <!-- Mensaje de error si el sueldo no es numérico o válido -->
                         <div class="error" id="lblErrorSueldo"></div>
+                        <!--
+                            - id="txtSueldo": input donde se escribe el sueldo.
+                            - lblErrorSueldo: mostrará mensajes (ej. rango permitido, formato numérico).
+                        -->
                     </div>
                 </div>
 
@@ -104,26 +147,43 @@
                     <!-- NUEVO: limpia todos los campos para ingresar un nuevo empleado -->
                     <div class="contenedorBoton">
                         <input type="button" value="NUEVO" class="estiloBoton" onclick="ejecutarNuevo();" />
+                        <!--
+                            - ejecutarNuevo(): función en roles.js que limpia los inputs y habilita los controles para crear un empleado.
+                        -->
                     </div>
 
                     <!-- GUARDAR: valida los datos y guarda el empleado en el arreglo global 'roles' -->
                     <div class="contenedorBoton">
                         <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar" onclick="guardarDeshabilitar();" />
+                        <!--
+                            - guardarDeshabilitar(): normalmente llama a guardar() y luego deshabilita campos.
+                            - btnGuardar puede habilitarse/deshabilitarse desde JS según el flujo.
+                        -->
                     </div>
 
                     <!-- LIMPIAR: limpia los campos sin guardar los datos -->
                     <div class="contenedorBoton">
                         <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar();" />
+                        <!--
+                            - limpiar(): limpia los campos y restablece el estado (deshabilita botones, etc.)
+                        -->
                     </div>
                 </div>
 
                 <!-- Tabla donde se muestran los empleados guardados dinámicamente por JS -->
                 <div id="tablaEmpleados" class="areaTabla"></div>
+                <!--
+                    - id="tablaEmpleados": objetivo donde la función mostrarEmpleados() inyecta la tabla HTML.
+                    - areaTabla: clase CSS para darle formato a la tabla/área donde aparecen los empleados.
+                -->
             </div>
 
             <!-- Imagen decorativa de la sección EMPLEADO -->
             <div class="logoEscuela">
                 <img src="./imagenes/empleado.jpg" width="80%" />
+                <!--
+                    - Imagen ilustrativa. Verificar que la ruta exista para que se muestre.
+                -->
             </div>
         </div>
     </div>
@@ -141,12 +201,23 @@
                         <input type="text" class="cajaTexto" id="txtBusquedaCedulaRol" />
                         <!-- Muestra error si la cédula no existe -->
                         <div class="error" id="lblErrorBusqueda"></div>
+                        <!--
+                            - txtBusquedaCedulaRol: donde el usuario escribe la cédula que quiere consultar para rol.
+                            - lblErrorBusqueda (en esta sección) puede compartirse con la otra o separarse; si se comparte, cuidado con sobreescribir mensajes.
+                        -->
                     </div>
                 </div>
 
                 <!-- Botón BUSCAR en ROL: llama buscarPorRol() para llenar los datos del empleado en ROL -->
                 <div class="contenedorBoton">
                     <input type="button" value="BUSCAR" class="estiloBoton" onclick="buscarPorRol();" />
+                    <!--
+                        - buscarPorRol(): función en roles.js que:
+                            1) toma txtBusquedaCedulaRol.
+                            2) busca el empleado en el arreglo empleados.
+                            3) si existe, coloca los datos en infoCedula, infoNombre, infoSueldo.
+                            4) si no existe, muestra alert o mensaje en lblErrorBusqueda.
+                    -->
                 </div>
             </div>
 
@@ -157,6 +228,10 @@
                     <div class="tituloCampo">CEDULA</div>
                     <div>
                         <div class="info" id="infoCedula"></div>
+                        <!--
+                            - infoCedula: div solo lectura donde se muestra la cédula del empleado encontrado.
+                            - recuperarTextoDiv("infoCedula") (en JS) puede leer este contenido para guardar el rol.
+                        -->
                     </div>
                 </div>
 
@@ -165,6 +240,7 @@
                     <div class="tituloCampo">NOMBRE</div>
                     <div>
                         <div class="info" id="infoNombre"></div>
+                        <!-- infoNombre: muestra nombre + apellido -->
                     </div>
                 </div>
 
@@ -173,6 +249,10 @@
                     <div class="tituloCampo">SUELDO</div>
                     <div>
                         <div class="info" id="infoSueldo"></div>
+                        <!--
+                            - infoSueldo: muestra el sueldo numérico.
+                            - recuperarFloatDiv("infoSueldo") convierte este texto a número en JS para cálculos.
+                        -->
                     </div>
                 </div>
 
@@ -184,6 +264,10 @@
                         <input type="text" class="cajaTexto" id="txtDescuentos" />
                         <!-- Mensaje de error si el descuento es inválido -->
                         <div class="error" id="lblErrorDescuentos"></div>
+                        <!--
+                            - txtDescuentos: el usuario escribe (ej. préstamos, anticipos) que se restarán al sueldo.
+                            - validar con recuperarFloat("txtDescuentos") y comprobar 0 <= descuento <= sueldo.
+                        -->
                     </div>
                 </div>
 
@@ -191,6 +275,13 @@
                 <div class="botones">
                     <div class="contenedorBoton">
                         <input type="button" value="CALCULAR" class="estiloBoton" onclick="calcularRol();" />
+                        <!--
+                            - calcularRol(): función que:
+                                1) lee descuento y sueldo.
+                                2) valida datos.
+                                3) calcula aporte empleado, aporte empleador (si aplica) y valor a pagar.
+                                4) muestra infoIESS e infoPago y habilita el botón de GUARDAR ROL.
+                        -->
                     </div>
                 </div>
 
@@ -199,6 +290,10 @@
                     <div class="tituloCampo">APORTE IESS</div>
                     <div>
                         <div class="info" id="infoIESS">0.0</div>
+                        <!--
+                            - infoIESS: mostrará el aporte calculado (formateado con toFixed(2) desde JS).
+                            - se inicia en 0.0 para indicar valor por defecto.
+                        -->
                     </div>
                 </div>
 
@@ -207,6 +302,9 @@
                     <div class="tituloCampo">TOTAL A PAGAR</div>
                     <div>
                         <div class="info" id="infoPago">0.0</div>
+                        <!--
+                            - infoPago: muestra el neto a pagar al empleado después de descuentos y aportes.
+                        -->
                     </div>
                 </div>
 
@@ -214,6 +312,11 @@
                 <div class="botones">
                     <div class="contenedorBoton">
                         <input type="button" value="GUARDAR" class="estiloBoton" id="lblguardar" onclick="guardarRol();" />
+                        <!--
+                            - lblguardar: id usado para habilitar/deshabilitar el botón desde JS (por ejemplo, solo habilitar después de calcularRol()).
+                            - guardarRol(): crea el objeto rol con {cedula,nombre,sueldo,valorAPagar,aporteEmpleado,aporteEmpleador} y lo agrega al arreglo roles.
+                            - luego llama mostrarRoles() para actualizar la tabla en la sección RESUMEN.
+                        -->
                     </div>
                 </div>
             </div>
@@ -221,6 +324,7 @@
             <!-- Imagen decorativa ROL -->
             <div class="logoEscuela">
                 <img src="./imagenes/rolPagos.jpg" width="80%" />
+                <!-- imagen ilustrativa para la sección ROL -->
             </div>
         </div>
     </div>
@@ -236,12 +340,20 @@
             <div class="area">
                 <!-- Tabla de resumen generada por JS -->
                 <div id="tablaResumen" class="areaTabla"></div>
+                <!--
+                    - tablaResumen: objetivo donde mostrarRoles() inyecta la tabla con todos los roles.
+                    - areaTabla: clase CSS para dar estilo a este contenedor.
+                -->
 
                 <!-- Total a pagar acumulado -->
                 <div class="ingresoDatos">
                     <div class="tituloCampo">TOTAL A PAGAR</div>
                     <div>
                         <div class="info" id="infoTotalPago">0.0</div>
+                        <!--
+                            - infoTotalPago: mostrará la suma de 'valorAPagar' de todos los roles.
+                            - se actualiza desde mostrarTotales() en roles.js.
+                        -->
                     </div>
                 </div>
 
@@ -250,6 +362,9 @@
                     <div class="tituloCampo">APORTE EMPRESA</div>
                     <div>
                         <div class="info" id="infoAporteEmpresa">0.0</div>
+                        <!--
+                            - infoAporteEmpresa: mostrará la suma de aporteEmpleador de todos los roles.
+                        -->
                     </div>
                 </div>
 
@@ -258,6 +373,9 @@
                     <div class="tituloCampo">APORTE EMPLEADO</div>
                     <div>
                         <div class="info" id="infoAporteEmpleado">0.0</div>
+                        <!--
+                            - infoAporteEmpleado: mostrará la suma de aporteEmpleado de todos los roles.
+                        -->
                     </div>
                 </div>
             </div>
@@ -265,6 +383,7 @@
             <!-- Imagen decorativa RESUMEN -->
             <div class="logoEscuela">
                 <img src="./imagenes/resumen.jpg" width="80%" />
+                <!-- imagen ilustrativa para la sección RESUMEN -->
             </div>
         </div>
     </div>

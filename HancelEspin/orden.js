@@ -1,10 +1,12 @@
 let orden = [
-    { nombre: "Marcos", edad: 18 },
-    { nombre: "Roberto", edad: 15 },
-    { nombre: "Kate", edad: 25 },
-    { nombre: "Diana", edad: 12 },
-    { nombre: "Benja", edad: 5 }
+    { nombre: "Marcos", edad: 18 }, // Primer objeto persona con nombre y edad
+    { nombre: "Roberto", edad: 15 }, // Segundo objeto persona
+    { nombre: "Kate", edad: 25 },    // Tercer objeto persona
+    { nombre: "Diana", edad: 12 },   // Cuarta persona
+    { nombre: "Benja", edad: 5 }     // Quinta persona
 ]
+// Arreglo global 'orden' que almacena objetos representando personas con nombre y edad
+
 
 agregarPersona = function () {
     // 1. Tomamos el valor del input donde el usuario ingresa el nombre
@@ -84,7 +86,7 @@ encontrarMayor = function () {
 
     // 7️⃣ Mostramos en la consola el resultado
 
-    return personaMayor;
+     return personaMayor; // Devolvemos la persona con mayor edad
 }
 
 encontrarMenor = function () {
@@ -105,7 +107,7 @@ encontrarMenor = function () {
 
     // 7️⃣ Mostramos en la consola el resultado
 
-    return personaMenor;
+    return personaMenor; // Devolvemos la persona con menpr edad
 }
 
 

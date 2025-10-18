@@ -1,47 +1,76 @@
 <!DOCTYPE html>
+<!-- Indica que este documento es un HTML5 -->
+
 <html>
+<!-- Inicio del documento HTML -->
 
 <head>
     <script src="orden.js"></script>
+    <!-- Se incluye el archivo JavaScript 'orden.js' donde están las funciones para agregar personas, mostrar tabla, encontrar mayor y menor -->
+    
     <script src="utilitarios.js"></script>
+    <!-- Se incluye el archivo JavaScript 'utilitarios.js' que contiene funciones de utilidad, como recuperarTexto y recuperarInt -->
 </head>
 
 <body onload="mostrarTablaPersonas();">
+<!-- El atributo onload ejecuta la función mostrarTablaPersonas() al cargar la página, mostrando la tabla inicial de personas -->
+
     <div class="tituloCampo">
         NOBRE DE LA PERSONA
+        <!-- Título que indica que el siguiente input es para el nombre de la persona -->
     </div>
+    
     <div>
         <input type="text" class="cajaTexto" id="txtNombre" />
+        <!-- Input de tipo texto donde el usuario ingresará el nombre de la persona -->
+        
         <div class="error" id="lblErrorNombre"></div>
+        <!-- Div para mostrar mensajes de error relacionados con el nombre -->
     </div>
+
     <div class="tituloCampo">
         EDAD DE LA PERSONA
+        <!-- Título que indica que el siguiente input es para la edad de la persona -->
     </div>
+
     <div>
         <input type="text" class="cajaTexto" id="txtEdad" />
+        <!-- Input de tipo texto donde el usuario ingresará la edad de la persona -->
+        
         <div class="error" id="lblErrorEdad"></div>
+        <!-- Div para mostrar mensajes de error relacionados con la edad -->
     </div>
+
     <div class="botones">
+    <!-- Contenedor que agrupa todos los botones de acción -->
 
         <div class="contenedorBoton">
             <input type="button" value="GUARDAR" class="estiloBoton" id="lblGuardar" onclick="agregarPersona();" />
+            <!-- Botón que llama a la función agregarPersona() al hacer clic para guardar los datos ingresados en los inputs -->
         </div>
 
         <div class="contenedorBoton">
             <input type="button" value="ENCONTRAR MAYOR" class="estiloBoton" id="lblMayorr"
                 onclick="determinarMayor();" />
+            <!-- Botón que llama a la función determinarMayor() al hacer clic, mostrando la persona con mayor edad -->
         </div>
 
         <div class="contenedorBoton">
             <input type="button" value="ENCONTRAR MENOR" class="estiloBoton" id="lblMenor"
                 onclick="determinarMenor();" />
+            <!-- Botón que llama a la función determinarMenor() al hacer clic, mostrando la persona con menor edad -->
         </div>
 
     </div>
+
     <div id="tablaMostrarPersonas"></div>
+    <!-- Div donde se insertará dinámicamente la tabla de personas usando innerHTML desde la función mostrarTablaPersonas() -->
 
     <div id="resultadoMayor"></div>
+    <!-- Div donde se mostrará el resultado de la persona mayor, asignado desde determinarMayor() -->
+
     <div id="resultadoMenor"></div>
+    <!-- Div donde se mostrará el resultado de la persona menor, asignado desde determinarMenor() -->
 
 </body>
 

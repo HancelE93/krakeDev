@@ -1,29 +1,53 @@
 <!DOCTYPE html>
+<!-- Define el tipo de documento como HTML5 -->
+
 <html>
+<!-- Comienza el documento HTML -->
 
 <head>
     <script src="clientes.js"></script>
+    <!-- Incluye el archivo clientes.js que contiene la lógica para crear, mostrar, buscar y guardar clientes -->
+
     <script src="utilitarios.js"></script>
+    <!-- Incluye utilitarios.js, que seguramente contiene funciones auxiliares como recuperar texto o mostrar mensajes -->
 </head>
 
 <body>
     <h5>CEDULA</h5>
+    <!-- Título pequeño para el campo de cédula -->
     <input type="text" id="txtCedula" />
+    <!-- Campo de texto donde el usuario ingresará la cédula del cliente -->
+
     <h5>NOMBRE</h5>
+    <!-- Título pequeño para el campo de nombre -->
     <input type="text" id="txtNombre" />
+    <!-- Campo de texto donde el usuario ingresará el nombre del cliente -->
+
     <h5>EDAD</h5>
+    <!-- Título pequeño para el campo de edad -->
     <input type="text" id="txtEdad" />
+    <!-- Campo de texto donde el usuario ingresará la edad del cliente -->
 
     <input type="button" value="AGREGAR" onclick="crearClientes();" />
-    <input type="button" value="MOSTRAR" onclick="mostrarClientes();" />
-    <input type="button" value="GUARDAR" onclick="guardarCambios();" />
-    <div id="tablaClientes">
+    <!-- Botón que al presionarse invoca la función crearClientes() para agregar un nuevo cliente al arreglo -->
 
+    <input type="button" value="MOSTRAR" onclick="mostrarClientes();" />
+    <!-- Botón que al presionarse invoca la función mostrarClientes() para visualizar la lista de clientes en pantalla -->
+
+    <input type="button" value="GUARDAR" onclick="guardarCambios();" />
+    <!-- Botón que al presionarse invoca la función guardarCambios() para almacenar los datos posiblemente en memoria local o base de datos -->
+
+    <div id="tablaClientes">
+    <!-- Div vacío donde se mostrará la tabla con los clientes agregados -->
     </div>
 
     <h5>INGRESE LA CEDULA</h5>
+    <!-- Título pequeño para el campo de búsqueda de cliente por cédula -->
     <input type="text" id="txtCedulaBusqueda" />
+    <!-- Campo de texto donde el usuario ingresará la cédula que quiere buscar -->
+
     <input type="button" value="BUSCAR" onclick="ejecutarBusqueda();" />
+    <!-- Botón que al presionarse invoca la función ejecutarBusqueda() para localizar y mostrar la información del cliente que coincide con la cédula ingresada -->
 </body>
 
 </html>

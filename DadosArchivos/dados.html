@@ -1,24 +1,30 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <!-- Declara que este documento es HTML5 -->
 
-<head>
-    <link href="dados.css" rel="stylesheet" />
-    <script src="dados.js"></script>
-    <script src="utilitarios.js"></script>
+<html> <!-- Inicio del documento HTML -->
+
+<head> <!-- Sección de cabecera donde se incluyen enlaces a estilos y scripts -->
+    <link href="dados.css" rel="stylesheet" /> <!-- Enlaza el archivo CSS "dados.css" que contiene los estilos para esta página -->
+    <script src="dados.js"></script> <!-- Enlaza el archivo JavaScript "dados.js" donde está la lógica del juego de dados -->
+    <script src="utilitarios.js"></script> <!-- Enlaza el archivo JavaScript "utilitarios.js", que probablemente contiene funciones de ayuda como cambiarTexto() -->
 </head>
 
-<body>
-    <div class="principal">
-        <div class="espacio"></div>
-        <div class="imagen">
-            <h1 id="lblNumero">?</h1>
-        </div>
-        <div class="botones">
-            <input type="button" value="JUGAR" class="estiloBoton" onclick="jugar();" />
-        </div>
-        <div class="espacio"></div>
+<body> <!-- Inicio del cuerpo de la página, donde se muestra el contenido visible -->
+    <div class="principal"> <!-- Contenedor principal de toda la página, con estilos definidos en CSS -->
+        
+        <div class="espacio"></div> <!-- Div vacío usado como espacio o margen superior, controlado por CSS -->
 
-    </div>
-</body>
+        <div class="imagen"> <!-- Contenedor para mostrar el número del dado -->
+            <h1 id="lblNumero">?</h1> <!-- Elemento de encabezado h1 con id "lblNumero" que inicialmente muestra "?", y luego se actualizará con el número del dado -->
+        </div>
 
-</html>
+        <div class="botones"> <!-- Contenedor para los botones de la página -->
+            <input type="button" value="JUGAR" class="estiloBoton" onclick="jugar();" /> 
+            <!-- Botón que muestra el texto "JUGAR", usa la clase "estiloBoton" para estilos CSS y llama a la función jugar() cuando se hace clic -->
+        </div>
+
+        <div class="espacio"></div> <!-- Otro div vacío usado como espacio o margen inferior, controlado por CSS -->
+
+    </div> <!-- Cierre del contenedor principal -->
+</body> <!-- Fin del cuerpo de la página -->
+
+</html> <!-- Fin del documento HTML -->

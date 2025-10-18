@@ -2,15 +2,24 @@
 <html>
 
 <head>
+    <!-- Se incluyen los scripts necesarios -->
+    <!-- aleatorios.js contiene la lógica para generar números aleatorios y mostrar la tabla -->
     <script src="aleatorios.js"></script>
+    <!-- utilitarios.js podría contener funciones generales, por ejemplo para recuperar texto de inputs -->
     <script src="utilitarios.js"></script>
 </head>
 
 <body>
+    <!-- Input donde el usuario ingresa la cantidad de números aleatorios que quiere generar -->
     <input type="text" id="lblaleatorio" />
+
+    <!-- Elemento donde se mostrarán los mensajes de error -->
     <h3 id="error"></h3>
+
+    <!-- Botón que al hacer clic ejecuta la función 'generarAleatorios' del archivo aleatorios.js -->
     <input type="button" value="GENERAR ALEATORiO" onclick="generarAleatorios();" />
 
+    <!-- Div donde se mostrará la tabla con los números aleatorios generados -->
     <div id="divTabla">
 
     </div>

@@ -1,126 +1,151 @@
-body{
-  background-color: black;
-    background-size: cover;
+/* ==================== ESTILOS GENERALES DEL BODY ==================== */
+body {
+    background-color: black; /* Fondo negro de la página */
+    background-size: cover;   /* Hace que cualquier imagen de fondo (si se agrega) cubra toda la pantalla */
+    margin-left: 0px;         /* Quita el margen izquierdo predeterminado del navegador */
+    margin-right: 0px;        /* Quita el margen derecho predeterminado */
+}
+
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
+.principal {
+    display: flex; /* Activa Flexbox para organizar los elementos hijos */
+    background-color: rgba(240, 248, 255, 0.8); /* Fondo blanco translúcido para resaltar el contenido */
     margin-left: 0px;
     margin-right: 0px;
+    flex-direction: row; /* Los elementos hijos se organizan en fila */
+    margin-top: 100px;   /* Separa el contenedor del borde superior */
 }
 
-.principal{
+/* ==================== TITULO ==================== */
+.titulo {
     display: flex;
-    background-color: rgba(240, 248, 255, 0.8);
-    margin-left: 0px;
-    margin-right:0px;
-    flex-direction: row;
-    margin-top: 100px;
+    flex-direction: row; /* Los elementos internos del título se organizan en fila (aunque usualmente es texto) */
+    justify-content: center; /* Centra horizontalmente */
+    margin: 20px;            /* Margen alrededor del título */
+    font-size: 30px;         /* Tamaño de letra grande para el título */
+    font-family: Arial, Helvetica, sans-serif; /* Fuente tipográfica */
+}
 
-}
-.titulo{
+/* ==================== LOGO ==================== */
+.logoEscuela {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 20px;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    flex: 1; /* Ocupa proporcionalmente el espacio disponible */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
 }
-.logoEscuela{
-    display: flex;
-    flex:1;
-    justify-content: center;
-    align-items: center;
-    
-}
-.areaResultado{
-    display: flex;
-    flex:1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.imagen{
-    display: flex;
-    flex:1;
-    justify-content: center;
-    align-items: center;
-  
-}
-.estiloBoton{
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 5px;
 
+/* ==================== ÁREA DE RESULTADOS ==================== */
+.areaResultado {
+    display: flex;
+    flex: 1;
+    flex-direction: column;   /* Organiza elementos en columna */
+    justify-content: center;   /* Centra verticalmente los elementos dentro del contenedor */
+    align-items: center;       /* Centra horizontalmente */
 }
+
+/* ==================== CONTENEDOR DE IMÁGENES ==================== */
+.imagen {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==================== BOTONES ==================== */
+.estiloBoton {
+    background-color: #4CAF50; /* Color verde de fondo */
+    border: none;              /* Sin borde predeterminado */
+    color: white;              /* Texto blanco */
+    padding: 15px;             /* Espaciado interno */
+    text-align: center;        /* Centra el texto */
+    font-size: 16px;           /* Tamaño de letra */
+    border-radius: 5px;        /* Bordes redondeados */
+}
+
+/* Efecto hover: cuando el mouse está sobre el botón */
 .estiloBoton:hover {
-    background-color:white; 
-    color: #4CAF50;
-    border:1px;
-    border-color: #4CAF50;
-    border-radius: 5px;
+    background-color: white;   /* Fondo blanco */
+    color: #4CAF50;            /* Texto verde */
+    border: 1px;               /* Agrega borde de 1px */
+    border-color: #4CAF50;     /* Color del borde verde */
+    border-radius: 5px;        /* Bordes redondeados */
 }
-.estiloBoton:active{
-    background-color: #4CAF50; 
-    border: none;
-    color: white;
+
+/* Efecto al presionar el botón */
+.estiloBoton:active {
+    background-color: #4CAF50; /* Fondo verde */
+    border: none;              /* Sin borde */
+    color: white;              /* Texto blanco */
     padding: 15px;
     text-align: center;
     font-size: 16px;
     border-radius: 5px;
+}
 
-}
-.botones{
+/* Contenedor para varios botones */
+.botones {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: row;       /* Botones en fila */
+    justify-content: center;   /* Centra horizontalmente */
+    margin-top: 20px;          /* Margen superior */
 }
-.contenedorBoton{
+
+/* Contenedor individual de un botón para alineación */
+.contenedorBoton {
     display: flex;
-    flex:1;
-    justify-content: center;
+    flex: 1;                  /* Ocupa proporcionalmente el espacio disponible */
+    justify-content: center;  /* Centra horizontalmente */
 }
-.cajaTexto{
-    border-radius: 4px;
-    border-color: #4CAF50;
-    
-    font-size: 20px;
-    color:rgb(85, 83, 83);
+
+/* ==================== INPUTS DE TEXTO ==================== */
+.cajaTexto {
+    border-radius: 4px;       /* Bordes redondeados */
+    border-color: #4CAF50;    /* Color de borde verde */
+    font-size: 20px;           /* Tamaño de letra */
+    color: rgb(85, 83, 83);   /* Color de texto gris oscuro */
 }
-.ingresoDatos{
+
+/* ==================== ÁREA DE INGRESO DE DATOS ==================== */
+.ingresoDatos {
     padding: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;       /* Elementos en fila (label + input) */
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
 }
-.tituloCampo{
+
+/* ==================== ETIQUETAS DE CAMPOS ==================== */
+.tituloCampo {
     font-size: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    margin-right: 20px;
+    justify-content: center;   /* Centra verticalmente la etiqueta */
+    align-items: flex-end;     /* Alinea al final de la fila (derecha) */
+    margin-right: 20px;        /* Espacio entre label y campo de texto */
 }
-.resultado{
+
+/* ==================== RESULTADOS ==================== */
+.resultado {
     display: flex;
-    flex:1;
-    flex-direction: row;
+    flex: 1;
+    flex-direction: row;      /* Organiza los resultados en fila */
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 30px;
-
+    margin-top: 30px;         /* Separa los resultados de los elementos anteriores */
 }
-.imagenResultado{
+
+/* ==================== IMAGEN DE RESULTADO ==================== */
+.imagenResultado {
     display: flex;
-    flex:6;
+    flex: 6;                  /* Ocupa más espacio dentro del contenedor */
     justify-content: center;
     align-items: center;
     margin: 20px;
 }
-.error{
-    color:red;
-    font-style: italic;
-    font-size: 16px;
+
+/* ==================== MENSAJES DE ERROR ==================== */
+.error {
+    color: red;               /* Texto rojo para resaltar errores */
+    font-style: italic;       /* Cursiva */
+    font-size: 16px;          /* Tamaño de letra */
 }

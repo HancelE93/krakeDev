@@ -1,30 +1,78 @@
 <!DOCTYPE html>
+<!-- Declaración del tipo de documento como HTML5 -->
+
 <html>
-    <head>
-        <link rel="stylesheet" href="placas.css"/>
-        <script src="serviciosPlacas.js"></script>
-        <script src="placas.js"></script>
-        <script src="utilitarios.js"></script>
-        <script src="utilitariosCadenas.js"></script>
-        <title>Validador de Placas</title>
-    </head>
-    <body>
-        <div id="contenedor">
+<!-- Inicio del documento HTML -->
+
+<head>
+    <!-- Sección de cabecera donde se colocan enlaces a hojas de estilo, scripts y metadatos -->
+
+    <link rel="stylesheet" href="placas.css"/>
+    <!-- Se enlaza la hoja de estilos "placas.css" para dar formato a la página -->
+
+    <script src="serviciosPlacas.js"></script>
+    <!-- Se incluye el archivo "serviciosPlacas.js" que contiene funciones para procesar placas -->
+
+    <script src="placas.js"></script>
+    <!-- Se incluye el archivo "placas.js" que contiene la lógica de validación de placas -->
+
+    <script src="utilitarios.js"></script>
+    <!-- Se incluye "utilitarios.js" que tiene funciones genéricas de ayuda para manipular el DOM -->
+
+    <script src="utilitariosCadenas.js"></script>
+    <!-- Se incluye "utilitariosCadenas.js" que probablemente contiene funciones de manejo de cadenas de texto -->
+
+    <title>Validador de Placas</title>
+    <!-- Título que aparecerá en la pestaña del navegador -->
+</head>
+
+<body>
+<!-- Cuerpo de la página donde se muestra el contenido visible -->
+
+    <div id="contenedor">
+    <!-- Contenedor principal que agrupa todo el contenido visible y permite aplicar estilos generales -->
+
         <h1>Validador de Placas</h1>
+        <!-- Título principal de la página -->
+
         <h2>Ingrese su placa:</h2>
+        <!-- Subtítulo que indica al usuario qué hacer -->
 
         <input type="text" id="txtplaca" placeholder="Ej: ABC-1234" />
+        <!-- Campo de texto donde el usuario ingresa la placa
+             - id="txtplaca" permite acceder a este elemento desde JavaScript
+             - placeholder muestra un ejemplo de formato de placa -->
+
         <input type="button" value="Validar" onclick="validarPlaca();" />
+        <!-- Botón que ejecuta la función "validarPlaca()" al hacer clic
+             - value="Validar" muestra el texto del botón
+             - onclick llama a la función que valida la placa ingresada -->
 
         <input type="button" value="Limpiar" onclick="limpiar();" />
+        <!-- Botón que ejecuta la función "limpiar()" al hacer clic
+             - Se utiliza para limpiar el campo de texto y los mensajes de validación -->
 
-        
+        <!-- Elementos h3 donde se mostrarán los resultados de la validación -->
+
         <h3 id="lblValido"></h3>
-        <h3 id="lblerrores"></h3>
-        <h3 id="lblProvincia"></h3>
-        <h3 id="lblVehiculo"></h3>
-        <h3 id="lblPicoPlaca"></h3>
-    </div>
-    </body>
-</html>
+        <!-- Aquí se mostrará un mensaje de "Estructura válida" si la placa es correcta -->
 
+        <h3 id="lblerrores"></h3>
+        <!-- Aquí se mostrarán los errores de validación si la placa es incorrecta -->
+
+        <h3 id="lblProvincia"></h3>
+        <!-- Aquí se mostrará la provincia determinada según la primera letra de la placa -->
+
+        <h3 id="lblVehiculo"></h3>
+        <!-- Aquí se mostrará el tipo de vehículo según la segunda letra de la placa -->
+
+        <h3 id="lblPicoPlaca"></h3>
+        <!-- Aquí se mostrará el día de pico y placa según el último dígito de la placa -->
+
+    </div>
+    <!-- Fin del contenedor principal -->
+
+</body>
+
+</html>
+<!-- Fin del documento HTML -->

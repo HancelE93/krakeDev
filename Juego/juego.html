@@ -1,60 +1,81 @@
 <!DOCTYPE html>
+<!-- Declara que este documento es HTML5 -->
 <html lang="es">
+<!-- Comienza el documento HTML y establece el idioma como español -->
 
 <head>
-    
     <title>Piedra, Papel o Tijera</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+
     <script src="juego.js"></script>
+    <!-- Importa el archivo juego.js donde se encuentra la lógica principal del juego -->
+
     <script src="serviciosJuego.js"></script>
+    <!-- Importa un archivo adicional con funciones auxiliares o servicios para el juego -->
+
     <script src="utilitarios.js"></script>
+    <!-- Importa funciones utilitarias generales (como cambiar texto, imágenes, etc.) -->
+
     <link rel="stylesheet" href="juego.css">
+    <!-- Importa el archivo CSS que define el estilo visual del juego -->
 </head>
 
 <body>
     <div class="contenedor-principal">
+    <!-- Contenedor principal que agrupa todo el contenido del juego -->
 
         <h2 class="titulo">JUEGA PIEDRA PAPEL O TIJERA</h2>
+        <!-- Título principal del juego -->
 
         <!-- Opciones del jugador -->
         <div class="opciones-jugador">
+            <!-- Contenedor para los botones/imágenes que el jugador puede elegir -->
+
             <img src="./imagenes/piedra.png" onclick="jugar('piedra')" width="100" alt="Piedra">
+            <!-- Imagen de la piedra, al hacer click llama a la función jugar() con el parámetro 'piedra' -->
+
             <img src="./imagenes/papel.png" onclick="jugar('papel')" width="100" alt="Papel">
+            <!-- Imagen del papel, al hacer click llama a jugar('papel') -->
+
             <img src="./imagenes/tijera.png" onclick="jugar('tijera')" width="100" alt="Tijera">
+            <!-- Imagen de la tijera, al hacer click llama a jugar('tijera') -->
         </div>
 
         <!-- Elección del computador -->
         <div class="eleccion-computador">
             <h3>Elección del Computador:</h3>
+            <!-- Título que indica cuál fue la elección del computador -->
+
             <img id="imgComputador" src="" width="100" alt="Opción del computador">
+            <!-- Imagen donde se mostrará la elección aleatoria del computador.
+                 Inicialmente está vacía (src="") y se actualizará mediante JS -->
         </div>
 
         <!-- Resultado del juego -->
         <div class="resultado">
             <h3 id="txtResultado">Resultado:</h3>
+            <!-- Elemento donde se mostrará si el jugador ganó, perdió o empató -->
         </div>
 
         <!-- Puntajes -->
         <div class="puntajes">
             <p>Usuario: <span id="puntosUsuario">0</span></p>
+            <!-- Muestra el puntaje acumulado del usuario, inicializado en 0 -->
+
             <p>Computador: <span id="puntosComputador">0</span></p>
+            <!-- Muestra el puntaje acumulado del computador, inicializado en 0 -->
         </div>
 
         <!-- Botón de nueva partida -->
         <div class="boton-reiniciar">
             <input type="button" value="NUEVA PARTIDA" onclick="nuevaPartida();" />
+            <!-- Botón que reinicia el juego, llama a la función nuevaPartida() -->
         </div>
 
     </div>
 </body>
 
 </html>
-
-
-
-
-
-
-
 
 
 

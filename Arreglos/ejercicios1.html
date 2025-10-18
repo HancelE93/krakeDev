@@ -1,26 +1,43 @@
 <!DOCTYPE html>
+<!-- Indica que el documento es HTML5 -->
+
 <html>
 
 <head>
-    <script src="ejercicios1.js"></script>
-    <script src="utilitarios.js"></script>
+    <!-- Se incluyen los scripts de JavaScript -->
+    <script src="ejercicios1.js"></script> <!-- Contiene las funciones para manejar notas, arrays y pruebas -->
+    <script src="utilitarios.js"></script> <!-- Contiene funciones generales de apoyo como recuperar valores de inputs -->
 </head>
 
 <body>
+    <!-- Input donde el usuario ingresa una nota -->
     <input type="text" id="txtNota" />
+
+    <!-- Botón que ejecuta la función agregarElementos() cuando se hace clic -->
     <input type="button" value="Prueba1" onclick="agregarElementos();" />
+
+    <!-- Botón que ejecuta la función probarAgregar(), probablemente agrega la nota al arreglo -->
     <input type="button" value="AGREGAR NOTA" onclick="probarAgregar();" />
+
+    <!-- Botón que recorre el arreglo de notas y probablemente las imprime en consola o HTML -->
     <input type="button" value="IMPRIMIR" onclick="recorrerArreglo();" />
 
+    <!-- Botón que calcula el promedio de las notas y llama a ejecutarPromedio() -->
     <input type="button" value="CALCULAR PROMEDIO" onclick="ejecutarPromedio();" />
+
+    <!-- Elemento donde se mostrará el promedio calculado -->
     <h3 id="lblPromedio"></h3>
 
+    <!-- Tabla estática de ejemplo -->
     <table>
+        <!-- Fila de encabezados -->
         <tr>
             <th>CABECERA 1</th>
             <th>CABECERA 2</th>
             <th>CABECERA 3</th>
         </tr>
+
+        <!-- Filas con datos de ejemplo -->
         <tr>
             <td>Celda 1</td>
             <td>Celda 2</td>
@@ -37,10 +54,14 @@
             <td>Celda 9</td>
         </tr>
     </table>
-    
+
+    <!-- Botón que genera dinámicamente una tabla, llama a generarTabla() -->
     <input type="button" value="GENERAR TABLA" onclick="generarTabla();" />
+
+    <!-- Botón que muestra las notas almacenadas en el arreglo, llama a mostrarNotas() -->
     <input type="button" value="MOSTRAR NOTAS" onclick="mostrarNotas();" />
 
+    <!-- Div donde se insertará la tabla generada dinámicamente -->
     <div id="divTabla">
 
     </div>

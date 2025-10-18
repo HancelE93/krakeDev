@@ -1,37 +1,75 @@
 <!DOCTYPE html>
+<!-- Declara que este documento es HTML5 -->
 <html lang="en">
+<!-- Comienza el documento HTML y establece el idioma como inglés -->
 
 <head>
     <link rel="stylesheet" type="text/css" href="ahorcado.css">
+    <!-- Importa el archivo CSS para dar estilo a la página del ahorcado -->
+
     <script src="ahorcado.js"></script>
+    <!-- Importa el archivo JS principal con la lógica del juego -->
+
     <script src="utilitarios.js"></script>
+    <!-- Importa utilitarios.js que contiene funciones auxiliares reutilizables -->
 </head>
 
 <body>
     <div class="containerMain">
+    <!-- Contenedor principal que agrupa todo el contenido de la página -->
 
         <div class="containerLefth">
+        <!-- Contenedor del lado izquierdo de la página, donde se juega -->
+
             <h3>JUEGO DEL AHORACADO</h3>
+            <!-- Título principal del juego -->
+
             <div>Ingresa una palabra de 5 letras</div>
+            <!-- Instrucción para que un jugador introduzca la palabra secreta -->
+
             <input type="password" id="txtSecreta" />
-            <input type="button" id="btnGuardar" value="GUARDAR"    onclick="guardarPalabra();"/>
+            <!-- Input donde se ingresa la palabra secreta. Es de tipo password para ocultar la palabra -->
+
+            <input type="button" id="btnGuardar" value="GUARDAR" onclick="guardarPalabra();"/>
+            <!-- Botón para guardar la palabra secreta. Al hacer clic llama a la función guardarPalabra() -->
+
             <div>Ingresa una letra:</div>
+            <!-- Instrucción para ingresar una letra para adivinar la palabra -->
+
             <input type="text" id="txtLetra">
+            <!-- Input donde se ingresa una letra para validar -->
+
             <input type="button" id="btnValidar" value="VALIDAR" onclick="ingresarLetra();"/>
+            <!-- Botón que valida la letra ingresada llamando a la función ingresarLetra() -->
+
             <br/>
-             <div>
+            <!-- Salto de línea para separar visualmente elementos -->
+
+            <div>
                 <div id="div0"> </div>
                 <div id="div1"> </div>
                 <div id="div2"> </div>
                 <div id="div3"> </div>
                 <div id="div4"> </div>
             </div>
+            <!-- Cinco divs que representan cada letra de la palabra secreta de 5 letras.
+                 Se irán llenando conforme el jugador acierte letras. -->
+
             <img id="ahorcadoImagen" src=""/>
+            <!-- Imagen que muestra el progreso del ahorcado según los errores del jugador.
+                 Inicialmente está vacía (src="") y se actualizará con JS -->
         </div>
+
         <div class="containerRigth">
+        <!-- Contenedor del lado derecho de la página, probablemente decorativo -->
+
             <img src="./fondo.jpg" width="100%" />
+            <!-- Imagen de fondo decorativa -->
+
             <img src="./krakeLogo.png" class="imgLogo" width="100%" />
+            <!-- Logo o imagen adicional del juego -->
         </div>
+
     </div>
 </body>
 

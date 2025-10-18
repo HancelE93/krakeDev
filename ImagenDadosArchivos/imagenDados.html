@@ -1,31 +1,77 @@
 <!DOCTYPE html>
+<!-- Declaración del tipo de documento HTML5 -->
 <html>
+<!-- Inicio del documento HTML -->
 
 <head>
+    <!-- Sección de encabezado donde se cargan scripts y estilos -->
+
     <script src="imagenDados.js"></script>
+    <!-- Se carga el archivo JavaScript que contiene la lógica del juego de dados -->
+
     <script src="utilitarios.js"></script>
+    <!-- Se carga un archivo JavaScript con funciones utilitarias, por ejemplo, cambiarTexto(), cambiarImagen(), etc. -->
+
     <link rel="stylesheet" href="imagenDados.css"/>
+    <!-- Se carga el archivo CSS para dar estilo a la página -->
 </head>
 
 <body>
-    <div class="principal">
-        <div class="espacio"></div>
-        <div class="imagen">
-            <img src="" width="150px" id="imgDado"/>
-            <div class="info">
-                <div>PUNAJTE</div>
-                <div class="datos" id="lblPuntos">0</div>
-                <div>LANZAMIENTOS</div>
-                <div class="datos" id="lblLanzamiento">5</div>
-                <div class="datos" id="lblWinOrLose">??</div>
+    <!-- Cuerpo del documento, donde se muestran los elementos visibles de la página -->
 
+    <div class="principal">
+        <!-- Div contenedor principal, probablemente usa flexbox según el CSS para organizar los elementos verticalmente -->
+
+        <div class="espacio"></div>
+        <!-- Div usado como espacio vacío, puede servir para márgenes o distribución visual -->
+
+        <div class="imagen">
+            <!-- Contenedor que incluye la imagen del dado y la información de juego -->
+
+            <img src="" width="150px" id="imgDado"/>
+            <!-- Imagen del dado, inicialmente vacía -->
+            <!-- El id 'imgDado' será usado por JavaScript para cambiar la imagen según el número lanzado -->
+            <!-- width="150px" define el tamaño de la imagen -->
+
+            <div class="info">
+                <!-- Contenedor para mostrar la información del juego: puntos, lanzamientos y estado -->
+
+                <div>PUNAJTE</div>
+                <!-- Texto fijo que indica que el siguiente número es el puntaje -->
+
+                <div class="datos" id="lblPuntos">0</div>
+                <!-- Aquí se muestra el puntaje actual -->
+                <!-- id='lblPuntos' permite a JavaScript actualizar el puntaje dinámicamente -->
+                <!-- Inicialmente 0 -->
+
+                <div>LANZAMIENTOS</div>
+                <!-- Texto fijo que indica que el siguiente número corresponde a los lanzamientos restantes -->
+
+                <div class="datos" id="lblLanzamiento">5</div>
+                <!-- Aquí se muestra la cantidad de lanzamientos restantes -->
+                <!-- id='lblLanzamiento' permite actualizarlo con JavaScript -->
+                <!-- Inicialmente 5 -->
+
+                <div class="datos" id="lblWinOrLose">??</div>
+                <!-- Aquí se muestra el estado del juego (GANASTE, GAME OVER, etc.) -->
+                <!-- id='lblWinOrLose' permite que JavaScript muestre mensajes según el juego -->
+                <!-- Inicialmente muestra '??' porque el juego no ha comenzado -->
             </div>
         </div>
+
         <div class="botones">
+            <!-- Contenedor para los botones de acción del juego -->
+
             <input type="button" value="JUGAR" class="estiloBoton" onclick="jugar();" />
+            <!-- Botón que ejecuta la función jugar() cuando se hace clic -->
+            <!-- class='estiloBoton' se usa para aplicar estilos desde el CSS -->
+            <!-- El valor del botón muestra el texto "JUGAR" -->
         </div>
+
         <div class="espacio"></div>
+        <!-- Otro div de espacio, para mejorar la distribución visual y centrar contenido -->
     </div>
 </body>
 
 </html>
+<!-- Fin del documento HTML -->

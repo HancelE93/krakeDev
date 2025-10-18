@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html>
+<!-- Definición del documento HTML -->
 
 <head>
+    <!-- ==================== HOJA DE ESTILOS ==================== -->
     <link rel="stylesheet" href="notas.css" />
+    <!-- Se incluye la hoja de estilos externa 'notas.css' para dar formato a los elementos -->
+
+    <!-- ==================== SCRIPTS DE JAVASCRIPT ==================== -->
     <script src="notas.js"></script>
+    <!-- Archivo donde se encuentra la lógica para calcular el promedio de notas -->
     <script src="utilitarios.js"></script>
+    <!-- Archivo con funciones auxiliares como recuperar valores de inputs, mostrar errores, etc. -->
 </head>
 
 <body>
+    <!-- ==================== CONTENEDOR PRINCIPAL ==================== -->
     <div class="principal">
+        <!-- Usamos la clase 'principal' que en CSS es un contenedor flex de tipo fila -->
+
+        <!-- ==================== LOGO DE LA ESCUELA ==================== -->
         <div class="logoEscuela">
             <img src="./imagenes/logoKrakeDev.png" width="80%" />
+            <!-- Imagen del logo, centrada por flexbox -->
         </div>
 
+        <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
         <div class="contenido">
+            <!-- Contenedor de los títulos y campos de ingreso de notas -->
+
+            <!-- ==================== TITULO ==================== -->
             <div class="titulo">
                 PROMEDIO DE NOTAS
+                <!-- Texto del título principal -->
             </div>
 
+            <!-- ==================== CAMPO NOTA 1 ==================== -->
             <div class="ingresoDatos">
+                <!-- Contenedor de fila para alinear etiqueta + input -->
+
                 <div class="tituloCampo">
                     NOTA 1
+                    <!-- Etiqueta descriptiva -->
                 </div>
+
                 <div>
                     <input type="text" class="cajaTexto" id="txtNota1"/>
+                    <!-- Input donde el usuario ingresa la primera nota -->
+
                     <div class="error" id="lblError1"></div>
+                    <!-- Div donde se mostrará el mensaje de error si el usuario ingresa un valor inválido -->
                 </div>
             </div>
-           
+
+            <!-- ==================== CAMPO NOTA 2 ==================== -->
             <div class="ingresoDatos">
                 <div class="tituloCampo">
                     NOTA 2
@@ -37,6 +63,8 @@
                     <div class="error" id="lblError2"></div>
                 </div>
             </div>
+
+            <!-- ==================== CAMPO NOTA 3 ==================== -->
             <div class="ingresoDatos">
                 <div class="tituloCampo">
                     NOTA 3
@@ -46,25 +74,38 @@
                     <div class="error" id="lblError3"></div>
                 </div>
             </div>
+
+            <!-- ==================== BOTÓN CALCULAR ==================== -->
             <div class="botones">
+                <!-- Contenedor de botones en fila, centrado -->
                 <div class="contenedorBoton">
                     <input type="button" value="CALCULAR PROMEDIO"
                      class="estiloBoton" onclick="calcular();" />
+                     <!-- Botón que llama a la función 'calcular()' definida en 'notas.js' -->
                 </div>
              </div>
         </div>
+
+        <!-- ==================== ÁREA DE RESULTADOS ==================== -->
         <div class="areaResultado">
+            <!-- Contenedor vertical para mostrar resultados y una imagen decorativa -->
+
+            <!-- ==================== RESULTADO DEL PROMEDIO ==================== -->
             <div class="resultado">
                 <div>
                     PROMEDIO:
+                    <!-- Texto fijo indicando que es el promedio -->
                 </div>
                 <div id="lblResultado">
                     0.0
+                    <!-- Div donde se mostrará el resultado del promedio calculado -->
                 </div>
             </div>
            
+            <!-- ==================== IMAGEN DECORATIVA ==================== -->
             <div class="imagenResultado">
                 <img src="./imagenes/notas.png" width="50%" />
+                <!-- Imagen decorativa relacionada con notas -->
             </div>
         </div>
     </div>

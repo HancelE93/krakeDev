@@ -1,87 +1,129 @@
 html, body {
     height: 100%;
+    /* Se asegura que el html y body ocupen el 100% del alto de la ventana */
     margin: 0;
-  }
+    /* Se elimina el margen por defecto del navegador */
+}
   
-  .principal {
+.principal {
     display: flex;
+    /* Se establece un contenedor flexible para organizar sus elementos hijos */
     flex-direction: column;
+    /* Los elementos hijos se colocan en columna (verticalmente) */
     height: 100%;
-   
-  }
+    /* Ocupa todo el alto disponible del body */
+}
 
-body{
+body {
     background-image: url("dragonBall.jpg");
+    /* Se establece una imagen de fondo para el body */
     background-size: cover;
+    /* La imagen se ajusta para cubrir todo el fondo sin deformarse */
     background-color: aliceblue;
+    /* Color de fondo alternativo visible si la imagen no carga o hay transparencia */
 }
-.imagen{
+
+.imagen {
     display: flex;
-    flex:5;
+    /* Contenedor flexible para organizar su contenido (imagen y info) */
+    flex: 5;
+    /* Ocupa 5 unidades de espacio proporcional en el flexbox del contenedor principal */
     background-color: rgba(255, 255, 255, 0.9);
+    /* Fondo blanco semi-transparente para destacar la imagen y el contenido dentro */
     justify-content: center;
+    /* Centra horizontalmente los elementos hijos dentro de este contenedor */
     align-items: center;
+    /* Centra verticalmente los elementos hijos dentro de este contenedor */
 }
-.botones{
-    display: flex;
-    flex:2;
 
+.botones {
+    display: flex;
+    /* Contenedor flexible para los botones */
+    flex: 2;
+    /* Ocupa 2 unidades de espacio proporcional */
     justify-content: center;
+    /* Centra los botones horizontalmente */
     align-items: center;
+    /* Centra los botones verticalmente */
 }
-.espacio{
+
+.espacio {
     display: flex;
-    flex:2;
+    /* Contenedor flexible, usado para separar espacios visualmente */
+    flex: 2;
+    /* Ocupa 2 unidades de espacio proporcional */
 }
 
-.estiloBoton{
-    background-color: rgb(0, 0, 0); 
+.estiloBoton {
+    background-color: rgb(0, 0, 0);
+    /* Color negro de fondo para el botón */
     border: none;
-    color:white;
+    /* Se elimina el borde por defecto */
+    color: white;
+    /* Color del texto en blanco */
+    padding: 15px;
+    /* Espaciado interno del botón */
+    text-align: center;
+    /* Centra el texto dentro del botón */
+    font-size: 30px;
+    /* Tamaño de la fuente */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    margin: 5px;
+    /* Espacio externo alrededor del botón */
+    font-weight: bold;
+    /* Fuente en negrita */
+    font-family: Arial, Helvetica, sans-serif;
+    /* Tipo de fuente */
+}
+
+.estiloBoton:hover {
+    background-color: rgb(87, 86, 86);
+    /* Cambia el fondo cuando el cursor está sobre el botón */
+    border: none;
+    color: white;
     padding: 15px;
     text-align: center;
     font-size: 30px;
     border-radius: 5px;
     margin: 5px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif
-
+    font-family: Arial, Helvetica, sans-serif;
+    /* Mantiene el mismo estilo general, solo cambia el color de fondo al pasar el cursor */
 }
-.estiloBoton:hover{
-    background-color: rgb(87, 86, 86); 
+
+.estiloBoton:active {
+    background-color: rgb(0, 0, 0);
+    /* Cambia el fondo cuando el botón está presionado */
     border: none;
-    color:white;
+    color: white;
     padding: 15px;
     text-align: center;
     font-size: 30px;
     border-radius: 5px;
     margin: 5px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif
-
+    font-family: Arial, Helvetica, sans-serif;
+    /* Mantiene el mismo estilo general, solo cambia el color de fondo al hacer click */
 }
-.estiloBoton:active{
-    background-color: rgb(0, 0, 0); 
-    border: none;
-    color:white;
-    padding: 15px;
-    text-align: center;
-    font-size: 30px;
-    border-radius: 5px;
-    margin: 5px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif
 
-}
-h1{
+h1 {
     font-size: 50px;
+    /* Tamaño grande para los encabezados principales, usado por ejemplo para mostrar números del dado */
 }
-.info{
+
+.info {
     font-size: 40px;
+    /* Tamaño de la fuente para los datos de información (puntaje, lanzamientos, etc.) */
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* Fuente llamativa para resaltar la información */
     color: blueviolet;
+    /* Color del texto azul violeta */
 }
-.datos{
+
+.datos {
     color: black;
+    /* Color negro para los valores de datos dentro de .info */
     margin-left: 40px;
+    /* Margen a la izquierda para separar los datos del texto descriptivo */
 }

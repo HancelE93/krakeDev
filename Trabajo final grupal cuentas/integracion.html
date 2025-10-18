@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Enlazamos la hoja de estilos externa que da formato a la página -->
+    <link href="banco.css" rel="stylesheet" />
+
+    <!-- Enlazamos los scripts JavaScript donde está la lógica -->
+    <!-- integracion.js: contiene funciones como cargarCuenta, ejecutarDeposito, etc. -->
+    <!-- utilitarios.js: contiene funciones auxiliares (como recuperarTexto, mostrarTexto, etc.) -->
+    <script src="integracion.js"></script>
+    <script src="utilitarios.js"></script>
+  </head>
+
+  <!-- Cuando se cargue la página, se ejecuta automáticamente la función cargarCuenta() -->
+  <body onload="cargarCuenta();">
+    <div class="principal">
+      
+      <!-- SECCIÓN DEL MENÚ LATERAL -->
+      <div class="menu">
+        <!-- Logo del banco -->
+        <div class="contenedorLogo">
+          <img src="./imagenes/logoKrakeDev.png" width="80%" />
+        </div>
+
+        <!-- Botones del menú que permiten cambiar entre secciones -->
+        <div class="contenedorBotones">
+          <input
+            type="button"
+            value="CUENTAS"
+            class="boton"
+            onclick="cargarCuenta();" 
+            <!-- Al hacer clic muestra el formulario de cuentas -->
+          />
+          <input
+            type="button"
+            value="TRANSACCIONES"
+            class="boton"
+            onclick="cargarTransacciones();"
+            <!-- Muestra la pantalla para depósitos y retiros -->
+          />
+          <input
+            type="button"
+            value="MOVIMIENTOS"
+            class="boton"
+            onclick="cargarMovimientos();"
+            <!-- Muestra los movimientos de una cuenta -->
+          />
+        </div>
+
+        <!-- Información de los integrantes del grupo -->
+        <div class="contenedorInfoGrupo">
+          <div>INTEGRANTE 1: Hancel Espin</div>
+          <div>INTEGRANTE 2: Michelle Guzman</div>
+          <div>INTEGRANTE 3: Kevin Macas</div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 1: CUENTAS -->
+      <div class="contenido" id="divCuentas">
+        <div class="superior">
+          <div class="titulo">CUENTAS</div>
+
+          <!-- Campo para ingresar el número de cuenta -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">NUMERO DE CUENTA</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtNumeroCuenta" />
+            </div>
+          </div>
+
+          <!-- Campo para ingresar la cédula -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">NUMERO DE CEDULA</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtCedula" />
+            </div>
+          </div>
+
+          <!-- Campo para ingresar el nombre -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">NOMBRE</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtNombre" />
+            </div>
+          </div>
+
+          <!-- Campo para ingresar el apellido -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">APELLIDO</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtApellido" />
+            </div>
+          </div>
+
+          <!-- Botón que llama a la función agregar() para guardar una nueva cuenta -->
+          <div class="contenedorAcciones">
+            <input type="button" value="GUARDAR" onclick="agregar();" />
+          </div>
+        </div>
+
+        <!-- Aquí se mostrará la tabla con el resumen de cuentas registradas -->
+        <div class="inferior" id="tablaResumen"></div>
+      </div>
+
+      <!-- SECCIÓN 2: TRANSACCIONES -->
+      <div class="contenido" id="divTransacciones">
+        <div class="superior">
+          <div class="titulo">TRANSACCIONES</div>
+
+          <!-- Campo donde se ingresa el número de cuenta existente -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">CUENTA</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtCuentaExistente" />
+            </div>
+          </div>
+
+          <!-- Botón para buscar la cuenta ingresada -->
+          <div class="contenedorAcciones">
+            <input
+              type="button"
+              value="BUSCAR"
+              id="btnBuscar"
+              onclick="ejecutarBusqueda();"
+            />
+          </div>
+
+          <!-- Campo para ingresar el monto del depósito o retiro -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">MONTO</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtMonto" />
+            </div>
+          </div>
+
+          <!-- Botones para realizar las operaciones -->
+          <div class="contenedorAcciones">
+            <input
+              type="button"
+              value="DEPOSITAR"
+              id="btnDepositar"
+              onclick="ejecutarDeposito();"
+            />
+            <input
+              type="button"
+              value="RETIRAR"
+              id="btnRetirar"
+              onclick="ejecutarRetiro();"
+            />
+          </div>
+
+          <!-- Aquí se muestra la información de la cuenta encontrada -->
+          <div class="infoCuenta">
+            <br />
+            <div id="txtNumeroCuentaExistente"></div>
+            <div id="txtNombreCuenta"></div>
+            <div id="txtCedulaCuenta"></div>
+            <div id="txtSaldoCuenta"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 3: MOVIMIENTOS -->
+      <div class="contenido" id="divMovimientos">
+        <div class="inferior">
+          <div class="titulo">MOVIMIENTOS</div>
+
+          <!-- Campo para ingresar el número de cuenta -->
+          <div class="contenedorTexto">
+            <div class="etiquetaTexto">NUMERO DE CUENTA</div>
+            <div class="cajaTexto">
+              <input type="text" class="caja" id="txtCuenta" />
+            </div>
+          </div>
+
+          <!-- Botón para buscar los movimientos de la cuenta -->
+          <div class="contenedorAcciones">
+            <input type="button" value="BUSCAR" onclick="verMovimientos();" />
+          </div>
+
+          <!-- Aquí se mostrará la tabla con los movimientos -->
+          <div id="tablaMovimientos">TABLA</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,10 +1,32 @@
 <!DOCTYPE html>
+<!-- Declaración del tipo de documento. Indica que este archivo es un documento HTML5 -->
+
 <html>
+<!-- Inicio del documento HTML -->
+
     <head>
+        <!-- La sección <head> contiene información sobre el documento, como scripts, estilos y metadatos -->
+
         <script src="ejercicio.js"></script>
+        <!-- Incluye un archivo JavaScript externo llamado "ejercicio.js" 
+             que contiene las funciones que se usarán en esta página, como la función "saludar()" -->
     </head>
+
     <body>
+        <!-- La sección <body> contiene todo el contenido visible de la página web -->
+
         <input type="button" value="PRESS ME" onclick="saludar();"/>
+        <!-- Crea un botón en la página
+             type="button": indica que es un botón normal
+             value="PRESS ME": el texto que se muestra en el botón
+             onclick="saludar();": cuando se hace clic en el botón, se ejecuta la función "saludar()" definida en "ejercicio.js" -->
+
         <img src="./imagenesGit/winpatric.gif" width="200px" id="imgSaudo"/>
+        <!-- Muestra una imagen en la página
+             src="./imagenesGit/winpatric.gif": indica la ruta de la imagen que se mostrará inicialmente
+             width="200px": define el ancho de la imagen en 200 píxeles
+             id="imgSaudo": asigna un identificador único al elemento, que permite modificarlo desde JavaScript -->
     </body>
-</html
+
+</html>
+<!-- Fin del documento HTML -->
