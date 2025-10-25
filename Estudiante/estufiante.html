@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="utilitarios.js"></script>
+    <script src="estudiante.js"></script>
+    <link rel="stylesheet" href="estudiante.css" />
+</head>
+
+<body onload="mostrarEstudientes();">
+    <div class="tituloCampo">
+        NOBRE DEL ESTUDAIANTE
+       
+    </div>
+
+    <div>
+        <input type="text" class="cajaTexto" id="txtNombre" />
+ 
+
+        <div class="error" id="lblErrorNombre"></div>
+        
+    </div>
+
+    <div class="tituloCampo">
+        CORREO DEL ESTUDIANTE 
+
+    <div>
+        <input type="text" class="cajaTexto" id="txtCorreo" />
+
+
+        <div class="error" id="lblErrorCorreo"></div>
+        
+    </div>
+    <div class="tituloCampo">
+        ID ESTUDIANTE
+    </div>
+
+    <div>
+        <input type="text" class="cajaTexto" id="txtIDEstudiente" />
+     
+        <div class="error" id="lblErrorID"></div>
+        
+    </div>
+
+    <div class="botones">
+      
+
+        <div class="campo">
+            <button type="button" onclick="agregarEstudiantes();">Agregar/Actualizar estudiante</button>
+        </div>
+         <label for="nombreProducto">Eliminar Estudiante </label>
+            <input type="text" class="cajaTexto" id="txtEliminar" />
+            <div class="error" id="lblEliminar"></div>
+        </div>
+        <div class="campo">
+            <button type="button" onclick="eliminarEstudiante();">Eliminar Estudiante</button>
+        </div>
+        <div class="campo">
+            <button type="button" onclick="actualizarEstudiante();">Actualizar Estudiante</button>
+        </div>
+
+
+    </div>
+
+    <div id="tablaMostrarEstudiante"></div>
+    
+</body>
+
+</html>
