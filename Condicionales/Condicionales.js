@@ -124,3 +124,19 @@ dejarSalir=function(notaMatematica,notaFisica,notaGeometria){
         return false // No da permiso
     }
 }
+
+
+
+// Obtenemos el valor que escribió el usuario en el input con id "txtNombre"
+let nombre = document.getElementById("txtNombre").value;
+
+// Usamos solo un "if" para validar
+if (nombre === "" || nombre === " ") { 
+  // nombre === "" → verifica si el usuario no escribió nada (cadena vacía)
+  // nombre === " " → verifica si el usuario escribió exactamente un espacio
+  console.log("❌ El nombre no puede estar vacío ni tener solo un espacio");
+} else {
+  // Si el nombre no está vacío ni es un solo espacio
+  console.log("✅ Nombre válido");
+}
+
