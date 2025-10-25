@@ -750,3 +750,33 @@ function calcularProductoMasVendido() {
 
   return productoMasVendido;
 }
+
+let cursos = [
+    { nombre: 'Primero A', docente: "Luis" },
+    { nombre: 'Segundo C', docente: "Carmen" },
+    { nombre: 'Tercero F', docente: "Pedro" },
+    { nombre: 'Cuarto A', docente: "Ana" },
+    { nombre: 'Quinto B', docente: "Maria" }
+];
+
+
+mostrarcuros = function () {
+    
+
+    let cmpTabla = document.getElementById("tablaDocente");
+    let contenidoTabla = "<table><tr>"
+        + "<th>PROFESOR</th>"
+        + "<th>CURSO</th>"
+        + "</tr>";
+
+    let elementoCliente;
+    for (let i = 0; i < cursos.length; i++) {
+        elementoCliente = cursos[i];
+        contenidoTabla += "<tr><td>"
+            + elementoCliente.docente + "</td>"
+            + "<td>" + elementoCliente.nombre + "</td>"
+            + "</tr>";
+    }
+    contenidoTabla += "</table>";
+    cmpTabla.innerHTML = contenidoTabla;
+}

@@ -7,63 +7,220 @@
     <link rel="stylesheet" href="estudiante.css" />
 </head>
 
-<body onload="mostrarEstudientes();">
-    <div class="tituloCampo">
-        NOBRE DEL ESTUDAIANTE
-       
-    </div>
+<body onload="mostrarSeccion('seccion1');">
 
-    <div>
-        <input type="text" class="cajaTexto" id="txtNombre" />
- 
-
-        <div class="error" id="lblErrorNombre"></div>
-        
-    </div>
-
-    <div class="tituloCampo">
-        CORREO DEL ESTUDIANTE 
-
-    <div>
-        <input type="text" class="cajaTexto" id="txtCorreo" />
+    <nav class="menu">
+        <button onclick="mostrarSeccion('seccion1');">Estudiantes</button>
+        <button onclick="mostrarSeccion('seccion2')">Datos del curso y docente</button>
+        <button onclick="mostrarSeccion('seccion3')">Asistencia</button>
+        <button onclick="mostrarSeccion('seccion4')">Resumen del dia </button>
+    </nav>
 
 
-        <div class="error" id="lblErrorCorreo"></div>
-        
-    </div>
-    <div class="tituloCampo">
-        ID ESTUDIANTE
-    </div>
 
-    <div>
-        <input type="text" class="cajaTexto" id="txtIDEstudiente" />
-     
-        <div class="error" id="lblErrorID"></div>
-        
-    </div>
+    <!-- Sección 1: Gestión de productos -->
+    <div id="seccion1" class="seccion" style="display:none;">
+        <div class="contenido-seccion">
+            <h2>ESTUDIANTES</h2>
 
-    <div class="botones">
-      
 
-        <div class="campo">
-            <button type="button" onclick="agregarEstudiantes();">Agregar/Actualizar estudiante</button>
+            <h3>Productos Registrados</h3>
+            <div id="tablaProductos">
+
+            </div>
+            <div class="tituloCampo">
+                NOMBRE DEL ESTUDAIANTE
+
+            </div>
+
+            <div>
+                <input type="text" class="cajaTexto" id="txtNombre" />
+
+
+                <div class="error" id="lblErrorNombre"></div>
+
+            </div>
+
+            <div class="tituloCampo">
+                CORREO DEL ESTUDIANTE
+
+                <div>
+                    <input type="text" class="cajaTexto" id="txtCorreo" />
+
+
+                    <div class="error" id="lblErrorCorreo"></div>
+
+                </div>
+                <div class="tituloCampo">
+                    ID ESTUDIANTE
+                </div>
+
+                <div>
+                    <input type="text" class="cajaTexto" id="txtIDEstudiente" />
+
+                    <div class="error" id="lblErrorID"></div>
+
+                </div>
+
+                <div class="botones">
+
+
+                    <div class="campo">
+                        <button type="button" onclick="agregarEstudiantes();">Agregar/Actualizar estudiante</button>
+                    </div>
+                    <label for="nombreProducto">Eliminar Estudiante </label>
+                    <input type="text" class="cajaTexto" id="txtEliminar" />
+                    <div class="error" id="lblEliminar"></div>
+                </div>
+                <div class="campo">
+                    <button type="button" onclick="eliminarEstudiante();">Eliminar Estudiante</button>
+                </div>
+                <div class="campo">
+                    <button type="button" onclick="actualizarEstudiante();">Actualizar Estudiante</button>
+                </div>
+
+
+            </div>
+
+            <div id="tablaMostrarEstudiante"></div>
         </div>
-         <label for="nombreProducto">Eliminar Estudiante </label>
-            <input type="text" class="cajaTexto" id="txtEliminar" />
-            <div class="error" id="lblEliminar"></div>
-        </div>
-        <div class="campo">
-            <button type="button" onclick="eliminarEstudiante();">Eliminar Estudiante</button>
-        </div>
-        <div class="campo">
-            <button type="button" onclick="actualizarEstudiante();">Actualizar Estudiante</button>
-        </div>
-
-
     </div>
 
-    <div id="tablaMostrarEstudiante"></div>
-    
+
+    <!-- Sección : G-->
+    <div id="seccion2" class="seccion" style="display:none;">
+        <div class="contenido-seccion">
+            <h2>CURSO Y DOCENTE</h2>
+
+            <div class="tituloCampo">
+                CRUSO
+                <div>
+                    <input type="text" class="cajaTexto" id="txtCurso" />
+
+
+                    <div class="error" id="lblErrorCurso"></div>
+
+                </div>
+                <div class="tituloCampo">
+                    DOCENTE
+                </div>
+
+                <div>
+                    <input type="text" class="cajaTexto" id="txtDocente" />
+
+                    <div class="error" id="lblErrorDocente"></div>
+
+                </div>
+                <h5 id="mensaje"></h5>
+                <div class="campo">
+
+                    <button type="button" onclick="agregarDocente();">Guardar</button>
+                </div>
+
+                <h3>Cursos</h3>
+                <ul id="listaCategorias">
+                    <!-- Categorías aparecerán aquí -->
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="seccion3" class="seccion" style="display:none;">
+        <div class="contenido-seccion">
+            <h2>ASISTENCIA</h2>
+
+            <h2>Escoja Estado Asistencia:<h2>
+
+                    
+
+                    <div class="tituloCampo">
+                        ID
+                        <div>
+                            <input type="text" class="cajaTexto" id="txtId" />
+
+
+                            <div class="error" id="lblErrorId"></div>
+
+                        </div>
+                        <div class="tituloCampo">
+                            PRESENTE /AUSENTE
+                            <div>
+                                <input type="text" class="cajaTexto" id="txtPresente" />
+
+
+                                <div class="error" id="errorPresente"></div>
+
+                            </div>
+                            <input type="button" value="Registrar" onclick="registrarAsistencia();" />
+
+                            <div id="cotenedorTabla">
+
+                                <!-- <table id="tablaAsistencia">
+            
+
+        </table> -->
+
+                                <h3>Estudiantes registrados</h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>nombre</th>
+                                            <th>asistencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+        </div>
+
+
+        <div id="seccion4" class="seccion" style="display:none;">
+            <div class="contenido-seccion">
+                <h2>RESUMEN DE ASISTENCIA</h2>
+
+                <table id="tablaResumen"></table>
+
+                <div>
+                    <input type="text" class="cajaTexto" id="txtCuros" />
+
+
+                    <div class="error" id="errorCuros"></div>
+
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtDOcente" />
+
+
+                    <div class="error" id="errorDocente"></div>
+
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtEstado" />
+
+
+                    <div class="error" id="errorEstadpo"></div>
+
+                </div>
+
+                <input type="button" value="RESUMEN" onclick="generarResumen();" />
+            </div>
+        </div>
+        <script>
+            function mostrarSeccion(id) {
+                document.querySelectorAll('.seccion').forEach(div => {
+                    div.style.display = div.id === id ? 'block' : 'none';
+                });
+            }
+        </script>
+
+
 </body>
 
 </html>
